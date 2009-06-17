@@ -1,10 +1,21 @@
-A port of the Quicksilver string ranking algorithm
+A port of the Quicksilver string ranking algorithm.  Including the qs_score.js file will extend the javascript string object to include the score option.
 
+Examples:
 "hello world".score("axl") //=> 0
 "hello world".score("ow") //=> 0.6
 "hello world".score("hello world") //=> 1
 
-Tested in:
+Tested & working in:
 Firefox 2 & 3
 Safari 3 & 4
 IE: 7 & 8
+Chrome: 1 & 2
+Opera: 
+
+
+Notes:
+qs_score.js does not have any external dependencies._
+
+The tests located in the tests folder relies the files located in the tests folder.
+
+Please share your testing results with me if you are able to test under an unlisted browser.
