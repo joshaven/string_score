@@ -1,0 +1,7 @@
+A port of the Quicksilver string ranking algorithm
+
+"hello world".score("axl") //=> 0.0
+"hello world".score("ow") //=> 0.6
+"hello world".score("hello world") //=> 1.0
+
+Tested in Firefox 2 and Safari 3
