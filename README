@@ -1,21 +1,48 @@
-A port of the Quicksilver string ranking algorithm.  Including the qs_score.js file will extend the javascript string object to include the score option.
+This is a rewrite of A port of the Quicksilver string ranking algorithm.  
+Special thanks to 'Lachie Cox' for inspiration
 
-Examples:
+Examples
+========
 "hello world".score("axl") //=> 0
-"hello world".score("ow") //=> 0.6
+"hello world".score("ow")  //=> 0.18181818181818182 
+
+"hello world".score("h")           //=>0.09090909090909091
+"hello world".score("he")          //=>0.18181818181818182
+"hello world".score("hel")         //=>0.2727272727272727
+"hello world".score("hell")        //=>0.36363636363636365
+"hello world".score("hello")       //=>0.45454545454545453
+...
+"hello world".score("helloworld")  //=>0.90909090909090913
+"hello world".score("hello worl")  //=>0.9090909090909091
 "hello world".score("hello world") //=> 1
 
+'Hello'.score('h') //=>0.13999999999999999
+'He'.score('h')    //=>0.35
+
+// Same case matches better then wrong case
+'Hello'.score('h') //=>0.13999999999999999
+'Hello'.score('H') //=>0.2
+
+
+
 Tested & working in:
-Firefox 2 & 3
-Safari 3 & 4
-IE: 7 & 8
-Chrome: 1 & 2
-Opera: 
+Firefox 3 & 3.5beta (Mac & Windows) - tied for third fastest with Opera 9
+Safari 4 (Mac & Windows)            - Safari 4 is the fastest!
+IE: 7 (Windows)                     - BROKEN!
+Chrome: 2 (Windows)                 - second fastest
+Opera: 9.64 (Windows)               - tied for third fastest with FireFox
+
 
 
 Notes:
-qs_score.js does not have any external dependencies._
+This plugin does not have any external dependencies.
 
 The tests located in the tests folder relies the files located in the tests folder.
 
 Please share your testing results with me if you are able to test under an unlisted browser.
+
+
+
+
+TODO: Compare with liquidmetal
+http://github.com/rmm5t/liquidmetal/tree/master
