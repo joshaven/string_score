@@ -1,15 +1,4 @@
-NOTICE
-======
-This string score plugin, although stable & safe may not give desirable results.
-For the moment, although this is much faster then (quicksilver.js aka qs_score.js), quicksilver.js or liquidmetal would probably suite your needs better.  In the next few days I hope to complete this plugin, at which point I will remove this notice!
-
-Example of current issue:
-"Hillsdale".score("hi") is lower then "Chippewa".score("hi") but shouldn't be!  This is due to having a higher percentage of matched characters and will be solved by weighting certain types of matches.
-
-
-
-This is a rewrite of A port of the Quicksilver string ranking algorithm.  
-Special thanks to 'Lachie Cox' for inspiration
+This javascript will score a string against another string. It began as a rewrite of A port of the Quicksilver string ranking algorithm (quicksilver.js aka qs_score.js).  The final product only contains a few characters from the original algorithm
 
 Examples
 ========
@@ -36,18 +25,18 @@ Examples
 
 Benchmarks & Tested Browsers
 ============================
-Tested & working in:                Benchmark in ms   Ranking
-Firefox 3 & 3.5beta (Mac & Windows) - 232.2, 223.6    Third Fastest (3.5beta) **
-Safari 4 (Mac & Windows)            - 193.8, 202.8    Second Fastest!
-IE: 7 (Windows)                     - 2255.2, 2411.4  Last Fastest
-Chrome: 2 (Windows)                 - 153.8, 106.6    Fastest
-Opera: 9.64 (Windows)               - 1460.8, 1400    Fourth Fastest
-** firefox 3.0.10 on windows failed (stop script message) under 5000 iterations of 446 character string scored by a 70 character string
+Tested & working in:                 Ranking (Based upon benchmarks when from tests/index.html QUnit test)
+Firefox 3 & 3.5beta (Mac & Windows)  Third Fastest (3.5beta) **
+Safari 4 (Mac & Windows)             Second Fastest!
+IE: 7 (Windows)                      Last Fastest
+Chrome: 2 (Windows)                  Fastest
+Opera: 9.64 (Windows)                Fourth Fastest
+** firefox 3.0.10 on windows failed (stop script message) under 5000 iterations of 446 character string scored by a 70 character string. All other browsers tested survived this test, and in fact survive a larger number of iterations.
 
 
 Notes
 =====
-This plugin does not have any external dependencies.
+string_score.js does not have any external dependencies other then a reasonably new browser.
 
 The tests located in the tests folder relies the files located in the tests folder.
 
