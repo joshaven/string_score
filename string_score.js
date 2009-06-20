@@ -1,11 +1,12 @@
 /*
- * string_score.js - Quicksilver Like Score
+ * string_score.js Javascript Plugin > Quicksilver Like Score
+ * http://github.com/joshaven/string_score/tree/master
  * 
  * This javascript will score a string against another string. It began as a rewrite of A port of the 
- * Quicksilver string ranking algorithm (quicksilver.js aka qs_score.js).  The final product only
- * contains a few characters from the original algorithm
+ * Quicksilver string ranking algorithm (quicksilver.js aka qs_score.js).  However, the final product only
+ * contains a few characters from the original algorithm.
  *
- * Special thanks to 'Lachie Cox' for inspiration
+ * Special thanks to 'Lachie Cox' for inspiration.
  * 
  * Examples: (results are for example only... I may change the scoring algorithm without updating examples)
  * "hello world".score("axl") //=> 0
@@ -13,6 +14,10 @@
  * "hello world".score("hello world") //=> 1
  *
  *
+ * The MIT License
+ * 
+ * Copyright (c) 2009 Joshaven Potter <yourtech@gmail.com>
+ * 
  * The MIT License
  * 
  * Copyright (c) 2009 Joshaven Potter <yourtech@gmail.com>
@@ -34,7 +39,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
-*/
+ */
 
 String.prototype.score = function(abbr) {
   function lowestValidIndex(a,b){ var min=Math.min(a,b); if(min>-1)return min; return Math.max(a,b); }
