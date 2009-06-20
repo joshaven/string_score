@@ -24,17 +24,19 @@ Examples
 'Hello'.score('H') //=>0.2
 
 
+Benchmarks & Tested Browsers
+============================
+Tested & working in:                Benchmark in ms   Ranking
+Firefox 3 & 3.5beta (Mac & Windows) - 232.2, 223.6    Third Fastest (3.5beta) **
+Safari 4 (Mac & Windows)            - 193.8, 202.8    Second Fastest!
+IE: 7 (Windows)                     - 2255.2, 2411.4  Last Fastest
+Chrome: 2 (Windows)                 - 153.8, 106.6    Fastest
+Opera: 9.64 (Windows)               - 1460.8, 1400    Fourth Fastest
+** firefox 3.0.10 on windows failed (stop script message) under 5000 iterations of 446 character string scored by a 70 character string
 
-Tested & working in:
-Firefox 3 & 3.5beta (Mac & Windows) - tied for third fastest with Opera 9
-Safari 4 (Mac & Windows)            - Safari 4 is the fastest!
-IE: 7 (Windows)                     - BROKEN!
-Chrome: 2 (Windows)                 - second fastest
-Opera: 9.64 (Windows)               - tied for third fastest with FireFox
 
-
-
-Notes:
+Notes
+=====
 This plugin does not have any external dependencies.
 
 The tests located in the tests folder relies the files located in the tests folder.
