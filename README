@@ -25,13 +25,13 @@ Examples: (results are for example only... I may change the scoring algorithm wi
 
 Benchmarks & Tested Browsers
 ============================
-Tested & working in:                 Ranking (Based upon benchmarks when from tests/index.html QUnit test)
-Firefox 3 & 3.5beta (Mac & Windows)  Third Fastest (3.5beta) **
-Safari 4 (Mac & Windows)             Second Fastest!
-IE: 7 (Windows)                      Last Fastest
-Chrome: 2 (Windows)                  Fastest
-Opera: 9.64 (Windows)                Fourth Fastest
-** firefox 3.0.10 on windows failed (stop script message) under 5000 iterations of 446 character string scored by a 70 character string. All other browsers tested survived this test, and in fact survive a larger number of iterations.
+Tested & working in:                 
+Firefox 3 & 3.5beta (Mac & Windows)  
+Safari 4 (Mac & Windows)             
+IE: 7 (Windows)                      
+Chrome: 2 (Windows)                  
+Opera: 9.64 (Windows)                
+** IE 7 fails (stop running this script message) with 4000 iterations of the benchmark test. All other browsers tested survived this test, and in fact survive a larger number of iterations.  The benchmark that is causing IE to choke is: 4000 iterations of 446 character string scoring a 70 character match
 
 
 Notes
