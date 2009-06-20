@@ -1,3 +1,12 @@
+This is the fastest javascript string scoring plugin that I am aware of.  I have taken great joy in squeezing millisecond I can out of this script.
+
+Using the benchmarks provided in the project string_score is faster then liquidmetal.js & quicksilver.js:
+1) string_score.js: 246.8ms
+2) liquidmetal.js:  790.6ms
+3) quicksilver.js:  1910.4ms
+** tests run in FireFox 3.5b4 with 4000 iterations of the benchmark tests included
+
+
 This javascript will score a string against another string. It began as a rewrite of A port of the Quicksilver string ranking algorithm (quicksilver.js aka qs_score.js).  The final product only contains a few characters from the original algorithm
 
 Examples: (results are for example only... I may change the scoring algorithm without updating examples)
@@ -21,6 +30,11 @@ Examples: (results are for example only... I may change the scoring algorithm wi
 // Same case matches better then wrong case
 'Hello'.score('h') //=>0.13999999999999999
 'Hello'.score('H') //=>0.2
+
+// Acronym are given more weight
+"Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("Hills")
+"Hillsdale Michigan".score("Hillsd") >"Hillsdale Michigan".score("HiMi")
+
 
 
 Benchmarks & Tested Browsers
