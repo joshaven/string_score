@@ -1,6 +1,6 @@
 This javascript will score a string against another string. It began as a rewrite of A port of the Quicksilver string ranking algorithm (quicksilver.js aka qs_score.js).  The final product only contains a few characters from the original algorithm
 
-Examples
+Examples: (results are for example only... I may change the scoring algorithm without updating examples)
 ========
 "hello world".score("axl") //=> 0
 "hello world".score("ow")  //=> 0.18181818181818182 

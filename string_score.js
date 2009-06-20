@@ -1,5 +1,5 @@
 /*
- * string_score - Quicksilver Like Score
+ * string_score.js - Quicksilver Like Score
  * 
  * This javascript will score a string against another string. It began as a rewrite of A port of the 
  * Quicksilver string ranking algorithm (quicksilver.js aka qs_score.js).  The final product only
@@ -7,28 +7,10 @@
  *
  * Special thanks to 'Lachie Cox' for inspiration
  * 
- * Examples:
+ * Examples: (results are for example only... I may change the scoring algorithm without updating examples)
  * "hello world".score("axl") //=> 0
- * "hello world".score("ow")  //=> 0.18181818181818182 
- *
- * "hello world".score("h")           //=>0.09090909090909091
- * "hello world".score("he")          //=>0.18181818181818182
- * "hello world".score("hel")         //=>0.2727272727272727
- * "hello world".score("hell")        //=>0.36363636363636365
- * "hello world".score("hello")       //=>0.45454545454545453
- * ...
- * "hello world".score("helloworld")  //=>0.90909090909090913
- * "hello world".score("hello worl")  //=>0.9090909090909091
+ * "hello world".score("ow")  //=> 0.14545454545454548
  * "hello world".score("hello world") //=> 1
- *
- * // Score is better when the strings are closer
- * 'Hello'.score('h') //=>0.13999999999999999
- * 'He'.score('h')    //=>0.35
- *
- * // Same case matches better then wrong case
- * 'Hello'.score('h') //=>0.13999999999999999
- * 'Hello'.score('H') //=>0.2
- *
  *
  *
  * The MIT License
