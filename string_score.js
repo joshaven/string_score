@@ -26,7 +26,7 @@
 //
 // The MIT License
 // 
-// Copyright (c) 2008 Joshaven Potter
+// Copyright (c) 2008 Joshaven Potter <yourtech@gmail.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -49,17 +49,7 @@
 
 // String.prototype.score = function(abbreviation,offset) {
 String.prototype.score = function(abbr) {
-  
-  // fix IE not responding to indexOf
-  if(!String.newIndexOf){
-    String.prototype.newIndexOf = function(str){
-      for(var i=0,len=this.length; i<len; i++){
-        if(this[i]==str) return i;
-      }
-    return -1;
-    }
-  }
-  
+  function charFlopCase(c) { u = c.toUpperCase(c); return c == u ? c.toLowerCase(c) : u; }
   if(this == abbr) return 1.0;
   var scores = [];
   var abbr_length = abbr.length;
@@ -67,12 +57,12 @@ String.prototype.score = function(abbr) {
   var string_length = string.length;
 
   for(var i=0,len=abbr_length;i<len;i++){ // Walk through abbreviation
-    loc = string.indexOf(abbr[i]);
+    var loc = string.indexOf(abbr.charAt(i));
     if(loc > -1){ // proper case match
       scores = scores.concat(1.0);
       string = string.substring(loc,string_length); // left-trim up to the match
     } else {
-      loc = string.indexOf(abbr[i].charFlopCase);
+      loc = string.indexOf(charFlopCase(abbr.charAt(i)));
       if(loc > -1){
         scores = scores.concat(0.7);
         string = string.substring(loc,string_length); // left-trim up to the match
@@ -85,5 +75,3 @@ String.prototype.score = function(abbr) {
   for(var i=0,sum=0,l=abbr_length;i<l;i++) sum+=scores[i];
   return sum/this.length;
 };
-
-String.prototype.charFlopCase = function(){ u = this.toUpperCase(this); return this === u ? this.toLowerCase(this) : u; }
