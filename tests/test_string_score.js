@@ -35,6 +35,10 @@ $(document).ready(function(){
     ok('Hello World'.score('HW') > 'Hello World'.score('Hl'));
   });
   
+  test('Beginning of string bonus', function(){
+    ok("Hillsdale".score("hi") > "Chippewa".score("hi"));
+  });
+  
   module('Benchmark');
   test('Expand to see time to score', function(){
     var itterations = 5000;
