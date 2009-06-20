@@ -31,6 +31,10 @@ $(document).ready(function(){
     ok('Hello World'.score('Hel') > 'Hello World'.score('Hld'));
   });
   
+  test('Acronym bonus', function(){
+    ok('Hello World'.score('HW') > 'Hello World'.score('Hl'));
+  });
+  
   module('Benchmark');
   test('Expand to see time to score', function(){
     var itterations = 5000;
