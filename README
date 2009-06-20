@@ -1,3 +1,13 @@
+NOTICE
+======
+This string score plugin, although stable & safe may not give desirable results.
+For the moment, although this is much faster then (quicksilver.js aka qs_score.js), quicksilver.js or liquidmetal would probably suite your needs better.  In the next few days I hope to complete this plugin, at which point I will remove this notice!
+
+Example of current issue:
+"Hillsdale".score("hi") is lower then "Chippewa".score("hi") but shouldn't be!  This is due to having a higher percentage of matched characters and will be solved by weighting certain types of matches.
+
+
+
 This is a rewrite of A port of the Quicksilver string ranking algorithm.  
 Special thanks to 'Lachie Cox' for inspiration
 
