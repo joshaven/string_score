@@ -42,39 +42,50 @@
  */
 
 String.prototype.score = function(abbr) {
-  function lowestValidIndex(a,b){ var min=Math.min(a,b); if(min>-1)return min; return Math.max(a,b); }
+  function firstValidIndex(a,b){ var min=Math.min(a,b); if(min>-1)return min; return Math.max(a,b); }
   if(this == abbr) return 1.0;
   var scores = [];
   var abbr_length = abbr.length;
   var string=this;
   var string_length = string.length;
+  var start_of_string_bonus = false;
 
   for(var i=0,len=abbr_length;i<len;i++){ // Walk through abbreviation
-    // var match_char = abbr.charAt(i);
     
     // find the first case insensitive match of a charactor
-    var location = lowestValidIndex(string.indexOf(abbr.charAt(i).toLowerCase()), string.indexOf(abbr.charAt(i).toUpperCase()));
+    var index_in_string = firstValidIndex(string.indexOf(abbr.charAt(i).toLowerCase()), string.indexOf(abbr.charAt(i).toUpperCase()));
 
-    if(location === -1) return 0; // Bail out if no match is found
+    if(index_in_string === -1) return 0; // Bail out if no abbr[i] is not found in string
     
-    scores.push(0.5); // set base score
+    scores.push(0.1); // set base score for matching abbr[i]
+
+    // beginning of string bonus
 
     // case bonus
-    if(string.charAt(location)===abbr.charAt(i)) scores[scores.length-1]+=0.1;
+    if(string.charAt(index_in_string)===abbr.charAt(i)) scores[scores.length-1]+=0.1;
     
-    // Consecutive Letter Bonus
-    // increate the score when matching first char of string OR when matching first letter of a word
-    if(location===0) scores[scores.length-1]+=0.4;
+    // Consecutive Letter & Start of String Bonus
+    if(index_in_string===0){
+      scores[scores.length-1]+=0.8; // increate the score when matching first char of the remainder of the string
+      if(i===0) start_of_string_bonus = true; // if match is the first letter of the string & first letter of abbr
+    }
     
     // Acronym Bonus
     // Weighting Logic: Typeing the first letter of an acronym is at most as if you preceeded it by two perfect letter matches
-    if(string.charAt(location-1)===' ')
-      scores[scores.length-1] += 0.4 * Math.min(location, 5); // cap bonus at 0.4 * 5  
+    if(string.charAt(index_in_string-1)===' ')
+      scores[scores.length-1] += 0.8// * Math.min(index_in_string, 5); // cap bonus at 0.4 * 5  
       
     // Left Trim the already matched part of the string (forces sequential matches)
-    string = string.substring(location+1 ,string_length); 
+    string = string.substring(index_in_string+1 ,string_length); 
   }
 
   for(i=0,sum=0,l=abbr_length;i<l;i++) sum+=scores[i];
-  return sum/this.length;
+  // return sum/this.length; // uncomment to weight small words higher
+  var abbr_score = sum/scores.length
+  var percentage_of_matched_string = abbr_length/this.length
+  var word_score = abbr_score * percentage_of_matched_string;
+  var my_score = (word_score + abbr_score)/2 // softens the penality for longer strings
+  if(start_of_string_bonus && my_score + 0.1 < 1) my_score += 0.1
+  
+  return my_score
 };

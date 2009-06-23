@@ -38,17 +38,34 @@ $(document).ready(function(){
   
   test('Acronym bonus', function(){
     expect(5);
-    ok('Hello World'.score('HW') > 'Hello World'.score('Hl'));
+    ok('Hello World'.score('HW') > 'Hello World'.score('Ho'), '"HW" should score higher with "Hello World" then Ho');
     ok('yet another Hello World'.score('yaHW') > 'Hello World'.score('yet another'));
-    ok("Hillsdale Michigan".score("HiMi") > "Chippewa Michigan".score("Chipp"));
-    ok("Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("Hills"));
-    ok("Hillsdale Michigan".score("HiMi") < "Hillsdale Michigan".score("Hillsda"));
+    ok("Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("Hil"), '"HiMi" should match "Hillsdale Michigan" higher then "Hil"');
+    ok("Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("illsda"));
+    ok("Hillsdale Michigan".score("HiMi") < "Hillsdale Michigan".score("hills")); // but not higher then matching start of word
   });
   
   test('Beginning of string bonus', function(){
     expect(1);
     ok("Hillsdale".score("hi") > "Chippewa".score("hi"));
   });
+  
+  test('proper string weights', function(){
+    ok("Research Resources North".score('res') > "Mary Conces".score('res'), 'res matches "Mary Conces" better then "Research Resources North"');
+    
+    ok("Research Resources North".score('res') > "Bonnie Strathern - Southwest Michigan Title Search".score('res'));
+  });
+  
+  test('Start of String bonus', function(){
+    ok("Mary Large".score('mar') > "Large Mary".score('mar'));
+    ok("Silly Mary Large".score('mar') === "Silly Large Mary".score('mar')); // ensure start of string bonus only on start of string
+  });
+  
+  // test('odd results', function(){
+  // 
+  //   ok("LandAmerica Lawyers Title-Traverce City".score('LandAmerica Lawyers'));
+  // });
+  
   
   module('Benchmark');
       test('Expand to see time to score', function(){
@@ -83,7 +100,6 @@ $(document).ready(function(){
         var end5 = new Date().valueOf();
         var t5=end5-start5;
         ok(true, t5 + ' miliseconds to do '+iterations+' iterations of 446 character string scoring a 70 character match');
-      
         
         ok(true, 'score (smaller is faster): '+ (t1+t2+t3+t4+t5)/5);
       });
