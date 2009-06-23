@@ -59,4 +59,7 @@ Please share your testing results with me if you are able to test under an unlis
 
 
 
-TODO: Add configuration parameters to control scoring weights.
+TODO: 
+- Add configuration parameters to control scoring weights.
+- Update tests to all have messages and sync tests to compairsons
+- Update tests to be more story like to ensure good coverage.
