@@ -61,12 +61,6 @@ $(document).ready(function(){
     ok("Silly Mary Large".score('mar') === "Silly Large Mary".score('mar')); // ensure start of string bonus only on start of string
   });
   
-  // test('odd results', function(){
-  // 
-  //   ok("LandAmerica Lawyers Title-Traverce City".score('LandAmerica Lawyers'));
-  // });
-  
-  
   module('Benchmark');
       test('Expand to see time to score', function(){
         var iterations = 4000;
