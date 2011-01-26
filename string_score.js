@@ -65,7 +65,7 @@ String.prototype.score = function(abbreviation) {
              c = '',
              index_c_lowercase = '',
              index_c_uppercase = '',
-             minimum; i < abbreviation_length; ++i) {
+             minimum = 0; i < abbreviation_length; ++i) {
 
         // Find the first case insensitive match of a character
         c = abbreviation.charAt(i);
@@ -125,7 +125,7 @@ String.prototype.score = function(abbreviation) {
     // return summation / string_length;
 
     abbreviation_score = summation / abbreviation_length;
-    percentage_of_matched_string = abbreviation_length / this.length;
+    percentage_of_matched_string = abbreviation_length / string_length;
     word_score = abbreviation_score * percentage_of_matched_string;
 
     // Reduce penalty for longer strings.
