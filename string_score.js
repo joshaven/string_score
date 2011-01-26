@@ -29,7 +29,7 @@ String.prototype.score = function(abbreviation) {
         return 1.0;
     }
 
-    var total_score = 0,
+    var total_character_score = 0,
         abbreviation_length = abbreviation.length,
         string = this,
         string_length = string.length,
@@ -37,7 +37,7 @@ String.prototype.score = function(abbreviation) {
         abbreviation_score = 0,
         percentage_of_matched_string = 0,
         word_score = 0,
-        my_score = 0;
+        final_score = 0;
 
     // Walk through abbreviation and add up scores.
     for (var i = 0,
@@ -103,22 +103,22 @@ String.prototype.score = function(abbreviation) {
         // (forces sequential matching).
         string = string.substring(index_in_string + 1, string_length);
 
-        total_score += character_score;
+        total_character_score += character_score;
     }
 
     // Uncomment to weigh smaller words higher.
     // return total_score / string_length;
 
-    abbreviation_score = total_score / abbreviation_length;
+    abbreviation_score = total_character_score / abbreviation_length;
     percentage_of_matched_string = abbreviation_length / string_length;
     word_score = abbreviation_score * percentage_of_matched_string;
 
     // Reduce penalty for longer strings.
-    my_score = (word_score + abbreviation_score) / 2;
+    final_score = (word_score + abbreviation_score) / 2;
 
-    if (start_of_string_bonus && (my_score + 0.1 < 1)) {
-        my_score += 0.1;
+    if (start_of_string_bonus && (final_score + 0.1 < 1)) {
+        final_score += 0.1;
     }
 
-    return my_score;
+    return final_score;
 };
