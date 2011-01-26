@@ -107,7 +107,7 @@ String.prototype.score = function(abbreviation) {
     }
 
     // Uncomment to weigh smaller words higher.
-    // return total_score / string_length;
+    // return total_character_score / string_length;
 
     abbreviation_score = total_character_score / abbreviation_length;
     percentage_of_matched_string = abbreviation_length / string_length;
