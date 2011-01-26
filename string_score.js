@@ -44,8 +44,8 @@ String.prototype.score = function(abbreviation) {
              score = 0,
              index_in_string = 0,
              c = '',
-             index_c_lowercase = '',
-             index_c_uppercase = '',
+             index_c_lowercase = 0,
+             index_c_uppercase = 0,
              minimum = 0; i < abbreviation_length; ++i) {
 
         // Find the first case insensitive match of a character
