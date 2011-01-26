@@ -27,6 +27,7 @@
  * THE SOFTWARE.
  */
 
+/*
 function __first_valid_index(a, b) {
     var min = Math.min(a, b);
     if (min > -1) {
@@ -34,6 +35,7 @@ function __first_valid_index(a, b) {
     }
     return Math.max(a, b);
 }
+*/
 
 /**
  * Scores a string against another string.
@@ -60,15 +62,24 @@ String.prototype.score = function(abbreviation) {
     for (var i = 0,
              score = 0,
              index_in_string = 0,
-             c = ''; i < abbreviation_length; ++i) {
+             c = '',
+             index_c_lowercase = '',
+             index_c_uppercase = '',
+             minimum; i < abbreviation_length; ++i) {
 
         // Find the first case insensitive match of a character
         c = abbreviation.charAt(i);
 
-        index_in_string = __first_valid_index(
-            string.indexOf(c.toLowerCase()),
-            string.indexOf(c.toUpperCase())
-        );
+        //index_in_string = __first_valid_index(
+        //    string.indexOf(c.toLowerCase()),
+        //    string.indexOf(c.toUpperCase())
+        //);
+        // Inlined the above call below.
+        index_c_lowercase = string.indexOf(c.toLowerCase());
+        index_c_uppercase = string.indexOf(c.toUpperCase());
+        minimum = Math.min(index_c_lowercase, index_c_uppercase);
+        index_in_string = (minimum > -1) ? minimum : Math.max(index_c_lowercase, index_c_uppercase);
+        // End inlining.
 
         if (index_in_string === -1) {
             // Bail out if no abbr[i] is not found in string
