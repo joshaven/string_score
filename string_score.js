@@ -41,7 +41,7 @@
  * THE SOFTWARE.
  */
 
-function firstValidIndex(a, b) {
+function __first_valid_index(a, b) {
     var min = Math.min(a, b);
     if (min > -1) {
         return min;
@@ -56,72 +56,82 @@ String.prototype.score = function(abbr) {
         return 1.0;
     }
 
-    var scores = [],
+    var summation = 0,
         abbr_length = abbr.length,
         string = this,
         string_length = string.length,
         start_of_string_bonus = false,
-        summation = 0,
         abbr_score = 0,
         percentage_of_matched_string = 0,
         word_score = 0,
         my_score = 0;
 
     // Walk through abbreviation
-    for (var i = 0, score = 0; i < abbr_length; ++i) {
+    for (var i = 0,
+             score = 0,
+             index_in_string = 0,
+             c = ''; i < abbr_length; ++i) {
 
         // Find the first case insensitive match of a character
-        var c = abbr.charAt(i),
-            c_lowercase = c.toLowerCase(),
-            c_uppercase = c.toUpperCase();
+        c = abbr.charAt(i);
 
-        var index_in_string = firstValidIndex(string.indexOf(c_lowercase), string.indexOf(c_uppercase));
+        index_in_string = __first_valid_index(
+            string.indexOf(c.toLowerCase()),
+            string.indexOf(c.toUpperCase())
+        );
 
         if (index_in_string === -1) {
             // Bail out if no abbr[i] is not found in string
             return 0;
         }
 
-        score = 0.1; // set base score for matching abbr[i]
+        // set base score for matching abbr[i]
+        score = 0.1;
 
-        // beginning of string bonus
-        // case bonus
-        if (string.charAt(index_in_string) === abbr.charAt(i)) {
+        // Same case bonus.
+        if (string.charAt(index_in_string) === c) {
             score += 0.1;
         }
 
-        // Consecutive Letter & Start of String Bonus
+        // Consecutive letter & start-of-string Bonus
         if (index_in_string === 0) {
-            score += 0.8; // increase the score when matching first char of the remainder of the string
+            // Increase the score when matching first character of the
+            // remainder of the string
+            score += 0.8;
             if (i === 0) {
-                // if match is the first letter of the string & first letter of abbr
+                // If match is the first character of the string
+                // & the first character of abbreviation, add a
+                // start-of-string match bonus.
                 start_of_string_bonus = true;
             }
         }
 
         // Acronym Bonus
-        // Weighting Logic: Typeing the first letter of an acronym is at most as if you preceeded it by two perfect letter matches
-        if (string.charAt(index_in_string - 1) === ' '){
-            score += 0.8; // * Math.min(index_in_string, 5); // cap bonus at 0.4 * 5
+        // Weighing Logic: Typing the first character of an acronym is as if you
+        // preceded it with two perfect character matches.
+        if (string.charAt(index_in_string - 1) === ' ') {
+
+            score += 0.8; // * Math.min(index_in_string, 5); // Cap bonus at 0.4 * 5
         }
 
-        // Left Trim the already matched part of the string (forces sequential matches)
+        // Left trim the already matched part of the string
+        // (forces sequential matching).
         string = string.substring(index_in_string + 1, string_length);
 
-        // Save score.
-        scores.push(score);
+        summation += score;
     }
 
-    for (var i = 0; i < abbr_length; ++i) {
-        summation += scores[i];
-    }
-    // return summation/this.length; // uncomment to weight small words higher
+    // Uncomment to weigh smaller words higher.
+    // return summation/string_length;
 
-    abbr_score = summation / scores.length;
+    abbr_score = summation / abbr_length;
     percentage_of_matched_string = abbr_length / this.length;
     word_score = abbr_score * percentage_of_matched_string;
-    my_score = (word_score + abbr_score) / 2; // softens the penality for longer strings
-    if (start_of_string_bonus && my_score + 0.1 < 1) {
+
+    // Reduce penalty for longer strings.
+    my_score = (word_score + abbr_score) / 2.0;
+
+    if (start_of_string_bonus && (my_score + 0.1 < 1)) {
         my_score += 0.1;
     }
 
