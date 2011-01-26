@@ -1,17 +1,7 @@
-/*
- * string_score.js Javascript Plugin > Quicksilver Like Score
- * http://github.com/joshaven/string_score/tree/master
+/**
+ * string_score.js: Quicksilver-like string scoring algorithm.
  *
- * This javascript will score a string against another string. It began as a rewrite of A port of the
- * Quicksilver string ranking algorithm (quicksilver.js aka qs_score.js).  However, the final product only
- * contains a few characters from the original algorithm.
- *
- * Special thanks to 'Lachie Cox' for inspiration.
- *
- * Examples: (results are for example only... I may change the scoring algorithm without updating examples)
- * "hello world".score("axl") //=> 0
- * "hello world".score("ow")  //=> 0.14545454545454548
- * "hello world".score("hello world") //=> 1
+ * Special thanks to Lachie Cox and Quicksilver for inspiration.
  *
  * The MIT License
  *
@@ -45,19 +35,23 @@ function __first_valid_index(a, b) {
     return Math.max(a, b);
 }
 
-String.prototype.score = function(abbr) {
-
+/**
+ * Scores a string against another string.
+ *
+ * @param abbreviation
+ */
+String.prototype.score = function(abbreviation) {
     // If the string is equal to the abbreviation, perfect match.
-    if (this == abbr) {
+    if (this == abbreviation) {
         return 1.0;
     }
 
     var summation = 0,
-        abbr_length = abbr.length,
+        abbreviation_length = abbreviation.length,
         string = this,
         string_length = string.length,
         start_of_string_bonus = false,
-        abbr_score = 0,
+        abbreviation_score = 0,
         percentage_of_matched_string = 0,
         word_score = 0,
         my_score = 0;
@@ -66,10 +60,10 @@ String.prototype.score = function(abbr) {
     for (var i = 0,
              score = 0,
              index_in_string = 0,
-             c = ''; i < abbr_length; ++i) {
+             c = ''; i < abbreviation_length; ++i) {
 
         // Find the first case insensitive match of a character
-        c = abbr.charAt(i);
+        c = abbreviation.charAt(i);
 
         index_in_string = __first_valid_index(
             string.indexOf(c.toLowerCase()),
@@ -106,7 +100,6 @@ String.prototype.score = function(abbr) {
         // Weighing Logic: Typing the first character of an acronym is as if you
         // preceded it with two perfect character matches.
         if (string.charAt(index_in_string - 1) === ' ') {
-
             score += 0.8; // * Math.min(index_in_string, 5); // Cap bonus at 0.4 * 5
         }
 
@@ -118,14 +111,14 @@ String.prototype.score = function(abbr) {
     }
 
     // Uncomment to weigh smaller words higher.
-    // return summation/string_length;
+    // return summation / string_length;
 
-    abbr_score = summation / abbr_length;
-    percentage_of_matched_string = abbr_length / this.length;
-    word_score = abbr_score * percentage_of_matched_string;
+    abbreviation_score = summation / abbreviation_length;
+    percentage_of_matched_string = abbreviation_length / this.length;
+    word_score = abbreviation_score * percentage_of_matched_string;
 
     // Reduce penalty for longer strings.
-    my_score = (word_score + abbr_score) / 2.0;
+    my_score = (word_score + abbreviation_score) / 2;
 
     if (start_of_string_bonus && (my_score + 0.1 < 1)) {
         my_score += 0.1;
