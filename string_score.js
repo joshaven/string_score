@@ -29,7 +29,7 @@ String.prototype.score = function(abbreviation) {
         return 1.0;
     }
 
-    var summation = 0,
+    var total_score = 0,
         abbreviation_length = abbreviation.length,
         string = this,
         string_length = string.length,
@@ -39,16 +39,18 @@ String.prototype.score = function(abbreviation) {
         word_score = 0,
         my_score = 0;
 
-    // Walk through abbreviation
+    // Walk through abbreviation and add up scores.
     for (var i = 0,
-             score = 0,
+             character_score = 0,
              index_in_string = 0,
              c = '',
              index_c_lowercase = 0,
              index_c_uppercase = 0,
-             minimum = 0; i < abbreviation_length; ++i) {
+             min_index = 0;
+         i < abbreviation_length;
+         ++i) {
 
-        // Find the first case insensitive match of a character
+        // Find the first case-insensitive match of a character.
         c = abbreviation.charAt(i);
 
         //index_in_string = __first_valid_index(
@@ -58,8 +60,10 @@ String.prototype.score = function(abbreviation) {
         // Inlined the above call below.
         index_c_lowercase = string.indexOf(c.toLowerCase());
         index_c_uppercase = string.indexOf(c.toUpperCase());
-        minimum = Math.min(index_c_lowercase, index_c_uppercase);
-        index_in_string = (minimum > -1) ? minimum : Math.max(index_c_lowercase, index_c_uppercase);
+        min_index = Math.min(index_c_lowercase, index_c_uppercase);
+        index_in_string = (min_index > -1) ?
+            min_index :
+            Math.max(index_c_lowercase, index_c_uppercase);
         // End inlining.
 
         if (index_in_string === -1) {
@@ -67,19 +71,19 @@ String.prototype.score = function(abbreviation) {
             return 0;
         }
 
-        // set base score for matching abbr[i]
-        score = 0.1;
+        // Set base score for matching 'c'.
+        character_score = 0.1;
 
         // Same case bonus.
         if (string.charAt(index_in_string) === c) {
-            score += 0.1;
+            character_score += 0.1;
         }
 
         // Consecutive letter & start-of-string Bonus
         if (index_in_string === 0) {
             // Increase the score when matching first character of the
             // remainder of the string
-            score += 0.8;
+            character_score += 0.8;
             if (i === 0) {
                 // If match is the first character of the string
                 // & the first character of abbreviation, add a
@@ -92,20 +96,20 @@ String.prototype.score = function(abbreviation) {
         // Weighing Logic: Typing the first character of an acronym is as if you
         // preceded it with two perfect character matches.
         if (string.charAt(index_in_string - 1) === ' ') {
-            score += 0.8; // * Math.min(index_in_string, 5); // Cap bonus at 0.4 * 5
+            character_score += 0.8; // * Math.min(index_in_string, 5); // Cap bonus at 0.4 * 5
         }
 
         // Left trim the already matched part of the string
         // (forces sequential matching).
         string = string.substring(index_in_string + 1, string_length);
 
-        summation += score;
+        total_score += character_score;
     }
 
     // Uncomment to weigh smaller words higher.
-    // return summation / string_length;
+    // return total_score / string_length;
 
-    abbreviation_score = summation / abbreviation_length;
+    abbreviation_score = total_score / abbreviation_length;
     percentage_of_matched_string = abbreviation_length / string_length;
     word_score = abbreviation_score * percentage_of_matched_string;
 
