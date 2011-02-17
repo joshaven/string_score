@@ -10,7 +10,7 @@
 #
 # Compilation notes:
 #
-# 1. Compile with the -b -c flags to the coffee-script compiler
+# 1. Compile with the `-b -c` flags to the coffee-script compiler
 
 #### `String.prototype.score`
 String::score = (abbreviation) ->
