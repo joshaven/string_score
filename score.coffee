@@ -80,15 +80,13 @@ String::score = (abbreviation) ->
     
     abbreviation_length = abbreviation.length
     abbreviation_score = total_character_score / abbreviation_length
+    
+    #### Reduce penalty for longer strings
+
     # Disabled code (for optimization):
     #
     #     percentage_of_matched_string = abbreviation_length / string_length
     #     word_score = abbreviation_score * percentage_of_matched_string
-    
-    #### Reduce penalty for longer strings
-    
-    # Disabled code (for optimization):
-    #
     #     final_score = (word_score + abbreviation_score) / 2
     final_score = ((abbreviation_score * (abbreviation_length / string_length)) + abbreviation_score) / 2
     
