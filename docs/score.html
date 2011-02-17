@@ -49,14 +49,11 @@ matches.</p>             </td>             <td class="code">               <div 
 
 <pre><code>percentage_of_matched_string = abbreviation_length / string_length
 word_score = abbreviation_score * percentage_of_matched_string
-</code></pre>             </td>             <td class="code">               <div class="highlight"><pre>    </pre></div>             </td>           </tr>                               <tr id="section-21">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-21">&#182;</a>               </div>               <p>Reduce penalty for longer strings.</p>
-
-<p>Disabled code (for optimization):</p>
+</code></pre>             </td>             <td class="code">               <div class="highlight"><pre>    </pre></div>             </td>           </tr>                               <tr id="section-21">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-21">&#182;</a>               </div>               <h3>Reduce penalty for longer strings</h3>             </td>             <td class="code">               <div class="highlight"><pre>    </pre></div>             </td>           </tr>                               <tr id="section-22">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-22">&#182;</a>               </div>               <p>Disabled code (for optimization):</p>
 
 <pre><code>final_score = (word_score + abbreviation_score) / 2
 </code></pre>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nv">final_score = </span><span class="p">((</span><span class="nx">abbreviation_score</span> <span class="o">*</span> <span class="p">(</span><span class="nx">abbreviation_length</span> <span class="sr">/ string_length)) + abbreviation_score) /</span> <span class="mi">2</span>
-    
-    <span class="k">if</span> <span class="nx">should_award_common_prefix_bonus</span> <span class="o">and</span> <span class="p">(</span><span class="nx">final_score</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+    </pre></div>             </td>           </tr>                               <tr id="section-23">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-23">&#182;</a>               </div>               <h3>Award common prefix bonus</h3>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="k">if</span> <span class="nx">should_award_common_prefix_bonus</span> <span class="o">and</span> <span class="p">(</span><span class="nx">final_score</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
         <span class="nx">final_score</span> <span class="o">+=</span> <span class="mf">0.1</span>
     
     <span class="k">return</span> <span class="nx">final_score</span>

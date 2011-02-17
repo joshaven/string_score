@@ -85,13 +85,14 @@ String::score = (abbreviation) ->
     #     percentage_of_matched_string = abbreviation_length / string_length
     #     word_score = abbreviation_score * percentage_of_matched_string
     
-    # Reduce penalty for longer strings.
-    #
+    #### Reduce penalty for longer strings
+    
     # Disabled code (for optimization):
     #
     #     final_score = (word_score + abbreviation_score) / 2
     final_score = ((abbreviation_score * (abbreviation_length / string_length)) + abbreviation_score) / 2
     
+    #### Award common prefix bonus
     if should_award_common_prefix_bonus and (final_score + 0.1 < 1)
         final_score += 0.1
     
