@@ -3,7 +3,7 @@
  * Special thanks to Lachie Cox and Quicksilver for inspiration.
  *
  * Copyright (C) 2009 Joshaven Potter <yourtech@gmail.com>
- * Copyright (C) 2010 Gora Khargosh <gora.khargosh@gmail.com>
+ * Copyright (C) 2010 Yesudeep Mangalapilly <gora.khargosh@gmail.com>
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
  */
