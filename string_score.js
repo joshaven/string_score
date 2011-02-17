@@ -30,8 +30,8 @@ String.prototype.score = function(abbreviation) {
         string_length = string.length,
         start_of_string_bonus = 0, // false,
         abbreviation_score/* = 0*/,
-        percentage_of_matched_string/* = 0*/,
-        word_score/* = 0*/,
+        //percentage_of_matched_string/* = 0*/,
+        //word_score/* = 0*/,
         final_score/* = 0*/;
 
     // If the string is equal to the abbreviation, perfect match.
@@ -110,11 +110,12 @@ String.prototype.score = function(abbreviation) {
     // return total_character_score / string_length;
 
     abbreviation_score = total_character_score / abbreviation_length;
-    percentage_of_matched_string = abbreviation_length / string_length;
-    word_score = abbreviation_score * percentage_of_matched_string;
+    //percentage_of_matched_string = abbreviation_length / string_length;
+    //word_score = abbreviation_score * percentage_of_matched_string;
 
     // Reduce penalty for longer strings.
-    final_score = (word_score + abbreviation_score) / 2;
+    //final_score = (word_score + abbreviation_score) / 2;
+    final_score = ((abbreviation_score * (abbreviation_length / string_length)) + abbreviation_score) / 2;
 
     if (start_of_string_bonus && (final_score + 0.1 < 1)) {
         final_score += 0.1;
