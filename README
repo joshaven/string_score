@@ -1,16 +1,27 @@
-This is the fastest javascript string scoring plugin that I am aware of.  I have taken great joy in squeezing every millisecond I can out of this script.  If you are aware of any ways to improve this script, please let me know.
+This is the fastest and smallest javascript string scoring plugin 
+that I am aware of.  I have taken great joy in squeezing every 
+millisecond I can out of this script.  If you are aware of any 
+ways to improve this script, please let me know.
 
-Using the benchmarks provided in the project string_score is faster then liquidmetal.js & quicksilver.js:
+Using the benchmarks provided in the project string_score is 
+faster and smaller then liquidmetal.js & quicksilver.js:
 1) string_score.js: 246.8ms
 2) liquidmetal.js:  790.6ms
 3) quicksilver.js:  1910.4ms
-** tests run in FireFox 3.5b4 with 4000 iterations of the benchmark tests included
+** tests run in FireFox 3.5b4 with 4000 iterations of the 
+benchmark tests included
 
+This javascript will score a string against another string. 
+It began as a rewrite of a port of the Quicksilver string 
+ranking algorithm (quicksilver.js aka qs_score.js).  The 
+final product only contains a few characters from the 
+original algorithm.
 
-This javascript will score a string against another string. It began as a rewrite of A port of the Quicksilver string ranking algorithm (quicksilver.js aka qs_score.js).  The final product only contains a few characters from the original algorithm
-
-Examples: (results are for example only... I may change the scoring algorithm without updating examples)
+Examples: 
 ========
+(results are for example only... I may change the scoring 
+algorithm without updating examples)
+
 "hello world".score("axl") //=> 0
 "hello world".score("ow")  //=> 0.18181818181818182 
 
@@ -45,7 +56,11 @@ Safari 4 (Mac & Windows)
 IE: 7 (Windows)                      
 Chrome: 2 (Windows)                  
 Opera: 9.64 (Windows)                
-** IE 7 fails (stop running this script message) with 4000 iterations of the benchmark test. All other browsers tested survived this test, and in fact survive a larger number of iterations.  The benchmark that is causing IE to choke is: 4000 iterations of 446 character string scoring a 70 character match
+** IE 7 fails (stop running this script message) with 4000 iterations 
+of the benchmark test. All other browsers tested survived this test, 
+and in fact survive a larger number of iterations.  The benchmark 
+that is causing IE to choke is: 4000 iterations of 446 character 
+string scoring a 70 character match.
 
 
 Notes
