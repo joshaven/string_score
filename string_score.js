@@ -34,19 +34,19 @@ String.prototype.score = function(abbreviation) {
         string = this,
         string_length = string.length,
         start_of_string_bonus = 0, // false,
-        abbreviation_score = 0,
-        percentage_of_matched_string = 0,
-        word_score = 0,
-        final_score = 0;
+        abbreviation_score/* = 0*/,
+        percentage_of_matched_string/* = 0*/,
+        word_score/* = 0*/,
+        final_score/* = 0*/;
 
     // Walk through abbreviation and add up scores.
     for (var i = 0,
-             character_score = 0,
-             index_in_string = 0,
-             c = '',
-             index_c_lowercase = 0,
-             index_c_uppercase = 0,
-             min_index = 0;
+             character_score/* = 0*/,
+             index_in_string/* = 0*/,
+             c/* = ''*/,
+             index_c_lowercase/* = 0*/,
+             index_c_uppercase/* = 0*/,
+             min_index/* = 0*/;
          i < abbreviation_length;
          ++i) {
 
