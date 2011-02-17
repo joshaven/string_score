@@ -1,6 +1,7 @@
 
 # Install this using `pip install squeeze`
 SQUEEZE=squeeze
+# Install this using `npm install uglify-js@latest` or using the instructions at the uglifyjs repo.
 UGLIFYJS=uglifyjs
 
 .PHONY: all clean
