@@ -2,7 +2,7 @@
  * string_score.js: Quicksilver-like string scoring algorithm.
  *
  * Copyright (C) 2009 Joshaven Potter <yourtech@gmail.com>
- * Copyright (C) 2010 Yesudeep Mangalapilly <yesudeep@gmail.com>
+ * Copyright (C) 2011 Yesudeep Mangalapilly <yesudeep@gmail.com>
  * [MIT license](http://www.opensource.org/licenses/mit-license.php)
  ###
 
