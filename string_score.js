@@ -24,11 +24,6 @@ function __first_valid_index(a, b) {
  * @param abbreviation
  */
 String.prototype.score = function(abbreviation) {
-    // If the string is equal to the abbreviation, perfect match.
-    if (this === abbreviation) {
-        return 1.0;
-    }
-
     var total_character_score = 0,
         abbreviation_length = abbreviation.length,
         string = this,
@@ -38,6 +33,11 @@ String.prototype.score = function(abbreviation) {
         percentage_of_matched_string/* = 0*/,
         word_score/* = 0*/,
         final_score/* = 0*/;
+
+    // If the string is equal to the abbreviation, perfect match.
+    if (string === abbreviation) {
+        return 1.0;
+    }
 
     // Walk through abbreviation and add up scores.
     for (var i = 0,
