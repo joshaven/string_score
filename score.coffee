@@ -56,7 +56,7 @@ String::score = (abbreviation) ->
         # Typing the first character of an acronym is as
         # though you preceded it with two perfect character
         # matches.
-        if string[index_in_string - 1] == ' '
+        if string.charAt(index_in_string - 1) == ' '
             character_score += 0.8 # * Math.min(index_in_string, 5) # Cap bonus at 0.4 * 5
         
         # Left trim the matched part of the string
@@ -71,11 +71,12 @@ String::score = (abbreviation) ->
     
     abbreviation_length = abbreviation.length
     abbreviation_score = total_character_score / abbreviation_length
-    percentage_of_matched_string = abbreviation_length / string_length
-    word_score = abbreviation_score * percentage_of_matched_string
+    #percentage_of_matched_string = abbreviation_length / string_length
+    #word_score = abbreviation_score * percentage_of_matched_string
     
     # Reduce penalty for longer strings.
-    final_score = (word_score + abbreviation_score) / 2
+    #final_score = (word_score + abbreviation_score) / 2
+    final_score = ((abbreviation_score * (abbreviation_length / string_length)) + abbreviation_score) / 2
     
     if should_award_common_prefix_bonus and (final_score + 0.1 < 1)
         final_score += 0.1
