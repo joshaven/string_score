@@ -14,12 +14,12 @@
 
 #### `String.prototype.score`
 String::score = (abbreviation) ->
+    string = this
     
     # Perfect match if the string equals the abbreviation.
-    return 1.0 if this == abbreviation
+    return 1.0 if string == abbreviation
 
     # Initializing variables.
-    string = this
     string_length = string.length
     total_character_score = 0
 

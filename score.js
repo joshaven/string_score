@@ -6,10 +6,10 @@
  * [MIT license](http://www.opensource.org/licenses/mit-license.php)
  */String.prototype.score = function(abbreviation) {
   var abbreviation_length, abbreviation_score, c, character_score, final_score, i, index_c_lowercase, index_c_uppercase, index_in_string, min_index, should_award_common_prefix_bonus, string, string_length, total_character_score, _len;
-  if (this === abbreviation) {
+  string = this;
+  if (string === abbreviation) {
     return 1.0;
   }
-  string = this;
   string_length = string.length;
   total_character_score = 0;
   should_award_common_prefix_bonus = 0;
