@@ -25,7 +25,7 @@ function __first_valid_index(a, b) {
  */
 String.prototype.score = function(abbreviation) {
     // If the string is equal to the abbreviation, perfect match.
-    if (this == abbreviation) {
+    if (this === abbreviation) {
         return 1.0;
     }
 
@@ -33,7 +33,7 @@ String.prototype.score = function(abbreviation) {
         abbreviation_length = abbreviation.length,
         string = this,
         string_length = string.length,
-        start_of_string_bonus = false,
+        start_of_string_bonus = 0, // false,
         abbreviation_score = 0,
         percentage_of_matched_string = 0,
         word_score = 0,
@@ -51,7 +51,7 @@ String.prototype.score = function(abbreviation) {
          ++i) {
 
         // Find the first case-insensitive match of a character.
-        c = abbreviation.charAt(i);
+        c = abbreviation[i];
 
         //index_in_string = __first_valid_index(
         //    string.indexOf(c.toLowerCase()),
@@ -75,7 +75,7 @@ String.prototype.score = function(abbreviation) {
         character_score = 0.1;
 
         // Same case bonus.
-        if (string.charAt(index_in_string) === c) {
+        if (string[index_in_string] === c) {
             character_score += 0.1;
         }
 
@@ -88,7 +88,7 @@ String.prototype.score = function(abbreviation) {
                 // If match is the first character of the string
                 // & the first character of abbreviation, add a
                 // start-of-string match bonus.
-                start_of_string_bonus = true;
+                start_of_string_bonus = 1; //true;
             }
         }
 
