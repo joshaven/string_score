@@ -65,14 +65,14 @@ string scoring a 70 character match.
 
 Notes
 =====
-string_score.js does not have any external dependencies other then a reasonably new browser.
+string_score.js does not have any external dependencies 
+other then a reasonably new browser.
 
-The tests located in the tests folder relies the files located in the tests folder.
+The tests located in the tests folder relies the files 
+located in the tests folder.
 
-Please share your testing results with me if you are able to test under an unlisted browser.
-
-
-
+Please share your testing results with me if you are 
+able to test under an unlisted browser.
 
 TODO: 
 - Add configuration parameters to control scoring weights.
