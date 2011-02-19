@@ -1,27 +1,13 @@
-/*!
- * string_score.js: Quicksilver-like string scoring algorithm.
- * Special thanks to Lachie Cox and Quicksilver for inspiration.
- *
- * Copyright (C) 2009 Joshaven Potter <yourtech@gmail.com>
- * Copyright (C) 2010 Yesudeep Mangalapilly <yesudeep@gmail.com>
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- */
-
 /*
-function __first_valid_index(a, b) {
-    var min = Math.min(a, b);
-    if (min > -1) {
-        return min;
-    }
-    return Math.max(a, b);
-}
+ * string_score.js: Quicksilver-like string scoring algorithm.
+ *
+ * Copyright (C) 2009-2011 yourtech@gmail.com
+ * Copyright (C) 2010-2011 yesudeep@gmail.com
+ * MIT license: http://www.opensource.org/licenses/mit-license.php
 */
 
 /**
- * Scores a string against another string.
- *
- * @param abbreviation
+ * Scores a string against another string.  ie:   'Hello World'.score('he');  //=> 0.6613636363636363
  */
 String.prototype.score = function(abbreviation) {
     var total_character_score = 0,
