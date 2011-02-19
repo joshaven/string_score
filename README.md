@@ -102,8 +102,8 @@ able to test under an unlisted browser.
 # Credits
 Thank you Lachie Cox and Quicksilver for inspiration.
 
-Copyright (C) 2009-2011 [Joshaven Potter](yourtech@gmail.com)  
-Copyright (C) 2010-2011 [Yesudeep Mangalapilly](yesudeep@gmail.com)  
+Copyright (C) 2009-2011 [Joshaven Potter](mailto://yourtech@gmail.com)  
+Copyright (C) 2010-2011 [Yesudeep Mangalapilly](mailto://yesudeep@gmail.com)  
 
 Special Thanks to Yesudeep Mangalapilly for further optimizations and
 establishing the build environment so we can keep the files in sync.
