@@ -1,7 +1,7 @@
 // qs_score - Quicksilver Score
-//
+// 
 // A port of the Quicksilver string ranking algorithm
-//
+// 
 // "hello world".score("axl") //=> 0.0
 // "hello world".score("ow") //=> 0.6
 // "hello world".score("hello world") //=> 1.0
@@ -13,19 +13,19 @@
 // http://blacktree-alchemy.googlecode.com/svn/trunk/Crucible/Code/NSString+BLTRRanking.m
 //
 // The MIT License
-//
+// 
 // Copyright (c) 2008 Lachie Cox
-//
+// 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -37,7 +37,7 @@
 
 String.prototype.score = function(abbreviation,offset) {
   offset = offset || 0 // TODO: I think this is unused... remove
-
+ 
   if(abbreviation.length == 0) return 0.9
   if(abbreviation.length > this.length) return 0.0
 
@@ -56,9 +56,9 @@ String.prototype.score = function(abbreviation,offset) {
       next_abbreviation = ''
     else
       next_abbreviation = abbreviation.substring(i)
-
+ 
     var remaining_score   = next_string.score(next_abbreviation,offset+index)
-
+ 
     if (remaining_score > 0) {
       var score = this.length-next_string.length;
 
@@ -73,7 +73,7 @@ String.prototype.score = function(abbreviation,offset) {
           }
 
           // XXX maybe not port this heuristic
-          //
+          // 
           //          } else if ([[NSCharacterSet uppercaseLetterCharacterSet] characterIsMember:[self characterAtIndex:matchedRange.location]]) {
           //            for (j = matchedRange.location-1; j >= (int) searchRange.location; j--) {
           //              if ([[NSCharacterSet uppercaseLetterCharacterSet] characterIsMember:[self characterAtIndex:j]])
@@ -85,7 +85,7 @@ String.prototype.score = function(abbreviation,offset) {
           score -= index
         }
       }
-
+   
       score += remaining_score * next_string.length
       score /= this.length;
       return score

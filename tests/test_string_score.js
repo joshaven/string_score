@@ -3,7 +3,7 @@ $(document).ready(function(){
   
   test('Exact match', function(){
     expect(1);
-    equals('Hello World'.score('Hello World'), 1.0);
+    equals('Hello World'.score('Hello World'), 1.0, 'Exact matches should score 1.0');
   });
   
   test('Not matchhing', function(){
@@ -13,27 +13,25 @@ $(document).ready(function(){
   });
   
   test('Match must be sequential', function(){
-    ok(!'Hello World'.score('WH'));
-    ok('Hello World'.score('HW'));
+    equals('Hello World'.score('WH'), 0, 'Matches out of order should return 0');
   });
   
   test('Same case should match better then wrong case', function(){
     ok('Hello World'.score('hello')<'Hello World'.score('Hello'));
   });
   
-  test('Closer matches should have higher scores', function(){
-    ok('Hello World'.score('H')<'Hello World'.score('He'));
-    ok('Hello World'.score('H')<'Hello World'.score('He'));
+  test('Higher score for closer matches', function(){
+    ok('Hello World'.score('H')<'Hello World'.score('He'), '"He" should match "Hello World" better then "H" does');
   });
   
-  test('should match first matchable letter regardless of case', function(){
-    ok("Hillsdale Michigan".score("himi")>0);
+  test('Matching with wrong case', function(){
+    ok("Hillsdale Michigan".score("himi")>0, 'should match first matchable letter regardless of case');
   });
   
   module('Advanced Scoreing Methods');
   test('consecutive letter bonus', function(){
     expect(1);
-    ok('Hello World'.score('Hel') > 'Hello World'.score('Hld'));
+    ok('Hello World'.score('Hel') > 'Hello World'.score('Hld'), '"Hel" should match "Hello World" better then "Hld"');
   });
   
   test('Acronym bonus', function(){
