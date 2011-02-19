@@ -82,6 +82,8 @@ The test: 4000 iterations of 446 character string scoring a 70 character match
   * Firefox 4 (2033ms) 
   * Chrome 9 (2769ms) 
   * Safari 5 (3269ms)
+* fuzzy_string.js
+  * Firefox 4 (OUCH! I am not sure it heats up my laptop and asks if I want to stop the script... fuzzy_string, nice idea but it doesn't like large strings matches.)
 
 ** Tests run with jQuery 1.5 on Mac Book Pro 2.4GHz Core 2 Duo running Snow Leopard
 *** quicksilver & string_score both use the same test file because they are used in the 
@@ -102,8 +104,8 @@ able to test under an unlisted browser.
 # Credits
 Thank you Lachie Cox and Quicksilver for inspiration.
 
-Copyright (C) 2009-2011 [Joshaven Potter](mailto://yourtech@gmail.com)  
-Copyright (C) 2010-2011 [Yesudeep Mangalapilly](mailto://yesudeep@gmail.com)  
+Copyright (C) 2009-2011 [Joshaven Potter](mailto:yourtech@gmail.com)  
+Copyright (C) 2010-2011 [Yesudeep Mangalapilly](mailto:yesudeep@gmail.com)  
 
 Special Thanks to Yesudeep Mangalapilly for further optimizations and
 establishing the build environment so we can keep the files in sync.
