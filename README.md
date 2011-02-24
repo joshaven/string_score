@@ -1,3 +1,13 @@
+# What is it
+
+* Simple - Adds a .score() method to the JavaScript String object... "String".score("str");
+* Fast - fastest that I can find, often drastically faster... run the tests yourself
+* Small - We are talking (431 bytes)
+* Portable - Works in 100% of the browsers I've tested on multiple platforms
+* Independent - Doesn't require any other JavaScript - should work with any framework.
+* Tested - Not everyone writes tests (silly people). Testing using Qunit
+* Proper - Passes jslint as well as meets the coding practices and principles of opinionated developers :-)
+
 # Overview
 This is production ready JavaScript which will score one string against another.
 
