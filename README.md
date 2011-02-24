@@ -121,9 +121,3 @@ Special Thanks to Yesudeep Mangalapilly for further optimizations and
 establishing the build environment so we can keep the files in sync.
 
 Licensed under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
-
-
-# TODO
-- Add configuration parameters to control scoring weights.
-- Update tests to all have messages and sync tests to compairsons
-- Update tests to be more story like to ensure good coverage.
