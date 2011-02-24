@@ -1,11 +1,10 @@
-/*
+/*!
  * string_score.js: Quicksilver-like string scoring algorithm.
  *
- * Copyright (C) 2009-2011 Joshaven Potter yourtech@gmail.com
- * Copyright (C) 2010-2011 Yesudeep Mangalapilly yesudeep@gmail.com
+ * Copyright (C) 2009-2011 Joshaven Potter <yourtech@gmail.com>
+ * Copyright (C) 2010-2011 Yesudeep Mangalapilly <yesudeep@gmail.com>
  * MIT license: http://www.opensource.org/licenses/mit-license.php
-*/
-String.prototype.score = function(abbreviation) {
+ */String.prototype.score = function(abbreviation) {
   var abbreviation_length, abbreviation_score, c, character_score, final_score, i, index_c_lowercase, index_c_uppercase, index_in_string, min_index, should_award_common_prefix_bonus, string, string_length, total_character_score, _len;
   string = this;
   if (string === abbreviation) {

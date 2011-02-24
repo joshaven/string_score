@@ -1,8 +1,8 @@
-###
+###!
  * string_score.js: Quicksilver-like string scoring algorithm.
  *
- * Copyright (C) 2009-2011 Joshaven Potter yourtech@gmail.com
- * Copyright (C) 2010-2011 Yesudeep Mangalapilly yesudeep@gmail.com
+ * Copyright (C) 2009-2011 Joshaven Potter <yourtech@gmail.com>
+ * Copyright (C) 2010-2011 Yesudeep Mangalapilly <yesudeep@gmail.com>
  * MIT license: http://www.opensource.org/licenses/mit-license.php
  ###
 
@@ -15,6 +15,10 @@
 # `String.prototype.score`
 # ------------------------
 String::score = (abbreviation) ->
+    # **Size optimization notes**:
+    # Declaring `string` before checking for an exact match
+    # does not affect the speed and reduces size because `this`
+    # occurs only once in the code as a result.
     string = this
     
     # Perfect match if the string equals the abbreviation.
@@ -39,6 +43,10 @@ String::score = (abbreviation) ->
 
         #### Identical strings
         # Bail out if current character is not found (case-insensitive) in remaining part of string.
+        #
+        # **Possible size optimization**:
+        # Replace `index_in_string == -1` with `index_in_string < 0`
+        # which has fewer characters and should have identical performance.
         return 0 if index_in_string == -1
         
         # Set base score for current character.
@@ -48,6 +56,11 @@ String::score = (abbreviation) ->
         #### Case-match bonus
         # If the current abbreviation character has the same case 
         # as that of the character in the string, we add a bonus.
+        #
+        # **Optimization notes**:
+        # `charAt` was replaced with an index lookup here because 
+        # the latter results in smaller and faster code without
+        # breaking any tests.
         if string[index_in_string] == c
             character_score += 0.1
         
@@ -55,9 +68,19 @@ String::score = (abbreviation) ->
         # Increase the score when each consecutive character of
         # the abbreviation matches the first character of the 
         # remaining string.
+        #
+        # **Size optimization disabled (truthiness shortened)**:
+        # It produces smaller code but is slower.
+        #
+        #     if !index_in_string
         if index_in_string == 0
             character_score += 0.8
             # String and abbreviation have common prefix, so award bonus. 
+            #
+            # **Size optimization disabled (truthiness shortened)**:
+            # It produces smaller code but is slower.
+            #
+            #     if !i
             if i == 0
                 should_award_common_prefix_bonus = 1 #yes
         
@@ -65,6 +88,12 @@ String::score = (abbreviation) ->
         # Typing the first character of an acronym is as
         # though you preceded it with two perfect character
         # matches.
+        #
+        # **Size optimization disabled**:
+        # `string.charAt(index)` wasn't replaced with `string[index]`
+        # in this case even though the latter results in smaller
+        # code (when minified) because the former is faster, and 
+        # the gain out of replacing it is negligible.
         if string.charAt(index_in_string - 1) == ' '
             character_score += 0.8 # * Math.min(index_in_string, 5) # Cap bonus at 0.4 * 5
         
@@ -75,7 +104,8 @@ String::score = (abbreviation) ->
         # Add to total character score.
         total_character_score += character_score
     
-    # Uncomment the following to weigh smaller words higher:
+    # **Feature disabled**:
+    # Uncomment the following to weigh smaller words higher.
     #
     #     return total_character_score / string_length
     
@@ -84,7 +114,7 @@ String::score = (abbreviation) ->
     
     #### Reduce penalty for longer strings
 
-    # Disabled code (for optimization):
+    # **Optimization notes (code inlined)**:
     #
     #     percentage_of_matched_string = abbreviation_length / string_length
     #     word_score = abbreviation_score * percentage_of_matched_string
