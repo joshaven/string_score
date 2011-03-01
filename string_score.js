@@ -9,7 +9,8 @@
 /**
  * Scores a string against another string.  ie:   'Hello World'.score('he');  //=> 0.6613636363636363
  */
-String.prototype.score = function(abbreviation) {
+String.prototype.score = function(abbreviation, fuzzyness) {
+    fuzzyness = fuzzyness || 0;
     var total_character_score = 0,
         abbreviation_length = abbreviation.length,
         string = this,
@@ -52,14 +53,19 @@ String.prototype.score = function(abbreviation) {
             Math.max(index_c_lowercase, index_c_uppercase);
         // End inlining.
 
-        if (index_in_string === -1) {
-            // Bail out if no abbr[i] is not found in string
-            return 0;
-        }
 
         // Set base score for matching 'c'.
         character_score = 0.1;
-
+        
+        if (index_in_string === -1) {
+            // Bail out if no abbr[i] is not found in string
+            if(fuzzyness==0) {
+              return 0;
+            } else {
+              character_score = character_score*fuzzyness;
+            }
+        }
+        
         // Same case bonus.
         if (string[index_in_string] === c) {
             character_score += 0.1;

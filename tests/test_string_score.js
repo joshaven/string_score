@@ -59,6 +59,17 @@ $(document).ready(function(){
     ok("Silly Mary Large".score('mar') === "Silly Large Mary".score('mar')); // ensure start of string bonus only on start of string
   });
   
+  module('Fuzzy String');
+  test('should pass with mismatch when fuzzy', function(){
+    expect(6);
+    equal('Hello World'.score('Hz'), 0, 'should score 0 without a specified fuzzyness.');
+    ok('Hello World'.score('Hz', 0.5) > 0, 'should have a score');
+    ok('Hello World'.score('Hz', 0.5) < 'Hello World'.score('H', 0.5), 'fuzzy matches should be worse then good ones');
+    ok('Hello World'.score('Hz', 0.9) < 'Hello World'.score('H', 0.5), 'higher fuzzyness should yield higher scores');
+    ok('Hello World'.score('Hello-World', 0.5) > 'Hello World'.score('HW', 0.5), 'a fuzzy near full match should be higher then a low match');
+    equal('Hello World'.score('Hello Wo-ld', 0.5), 'Hello World'.score('He*lo World', 0.5), "a fuzzy near full match shouldn't care where the mismatch is");
+  });  
+  
   module('Benchmark');
       test('Expand to see time to score', function(){
         var iterations = 4000;
