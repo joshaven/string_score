@@ -1,13 +1,19 @@
 /*!
- * string_score.js: Quicksilver-like string scoring algorithm.
+ * string_score.js: String Scoring Algorithm 0.1.9 
+ *
+ * https://github.com/joshaven/string_score
  *
  * Copyright (C) 2009-2011 Joshaven Potter <yourtech@gmail.com>
  * Copyright (C) 2010-2011 Yesudeep Mangalapilly <yesudeep@gmail.com>
  * MIT license: http://www.opensource.org/licenses/mit-license.php
+ *
+ * Date: Tue Feb 29 2011
 */
 
 /**
- * Scores a string against another string.  ie:   'Hello World'.score('he');  //=> 0.6613636363636363
+ * Scores a string against another string.
+ *  'Hello World'.score('he');     //=> 0.5931818181818181
+ *  'Hello World'.score('Hello');  //=> 0.7318181818181818
  */
 String.prototype.score = function(abbreviation, fuzzyness) {
   var total_character_score = 0,
