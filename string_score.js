@@ -1,13 +1,13 @@
 /*!
  * string_score.js: String Scoring Algorithm 0.1.9 
  *
- * https://github.com/joshaven/string_score
+ * http://joshaven.github.com/string_score
  *
  * Copyright (C) 2009-2011 Joshaven Potter <yourtech@gmail.com>
  * Copyright (C) 2010-2011 Yesudeep Mangalapilly <yesudeep@gmail.com>
  * MIT license: http://www.opensource.org/licenses/mit-license.php
  *
- * Date: Tue Feb 29 2011
+ * Date: Tue Mar 1 2011
 */
 
 /**
@@ -15,7 +15,7 @@
  *  'Hello World'.score('he');     //=> 0.5931818181818181
  *  'Hello World'.score('Hello');  //=> 0.7318181818181818
  */
-String.prototype.score = function(abbreviation, fuzzyness) {
+String.prototype.score = function(abbreviation, fuzziness) {
   var total_character_score = 0,
       abbreviation_length = abbreviation.length,
       string = this,
@@ -56,8 +56,8 @@ String.prototype.score = function(abbreviation, fuzzyness) {
     // End inlining.
     
     if (index_in_string === -1) { 
-      if (fuzzyness) {
-        fuzzies += 1-fuzzyness;
+      if (fuzziness) {
+        fuzzies += 1-fuzziness;
         break;
       } else {
         return 0;

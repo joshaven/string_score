@@ -7,29 +7,19 @@
 * Independent - Doesn't require any other JavaScript - should work with any framework.
 * Tested - Not everyone writes tests (silly people). Testing using Qunit
 * Proper - Passes jslint as well as meets the coding practices and principles of opinionated developers :-)
-* Fuzzyable - Optional paramater for fuzzyness (allows mismatched info to still score the string)
+* Fuzzyable - Optional paramater for fuzziness (allows mismatched info to still score the string)
 
-
-# Overview
-This is production ready JavaScript which will score one string against another.
-
-It began as a rewrite of a port of the Quicksilver string ranking algorithm (quicksilver.js aka qs_score.js). 
-However, the final product only contains a few characters (if any still remain) from the original algorithm. 
-The final product is much faster and has more features including scoring matched cases and first letters higher.
 
 ## Installation Notes
 Simply include one of the string score JavaScript files and call the .score() method on any string.
 
-This project contains many files but only one is required for use 
-[string_score.uglify.js](https://github.com/joshaven/string_score/raw/master/string_score.uglify.js) 
-is the smallest and thus is probably be the best choice.  jQuery and Qunit are used for testing purposes only.
 
 # Examples: 
 (results are for example only... I may change the scoring algorithm without updating examples)
-
-    "hello world".score("axl") //=> 0 (mismatch)
+    
+    "hello world".score("axl") //=> 0
     "hello world".score("ow")  //=> 0.35454545454545455
-
+    
     "hello world".score("e")           //=>0.1090909090909091 (single letter match)
     "hello world".score("h")           //=>0.5363636363636364 (single letter match plus bonuses for beginning of word and beginning of phrase)
     "hello world".score("he")          //=>0.5727272727272728
@@ -37,24 +27,24 @@ is the smallest and thus is probably be the best choice.  jQuery and Qunit are u
     "hello world".score("hell")        //=>0.6454545454545455
     "hello world".score("hello")       //=>0.6818181818181818
     ...
-    "hello world".score("helloworld")  //=>0.8827272727272727
     "hello world".score("hello worl")  //=>0.8636363636363635
+    "hello world".score("hello world") //=> 1
+    
+    // And then there is fuzziness
     "hello world".score("hello wor1")  //=>0  (the "1" in place of the "l" makes a mismatch)
-    "hello world".score("hello wor1",0.5)  //=>0.5581818181818182 (unless it is told to be fuzzy)
-    "hello world".score("hello world") //=> 1  
+    "hello world".score("hello wor1",0.5)  //=>0.5581818181818182 (fuzzy)
 
+    // considers string length
     'Hello'.score('h') //=>0.52
     'He'.score('h')    //=>0.6249999999999999  (better match becaus string length is closer)
 
-    // Same case matches better then wrong case  
+    // Same case matches better then wrong case
     'Hello'.score('h') //=>0.52
     'Hello'.score('H') //=>0.5800000000000001
 
-    // Acronym are given more weight  
+    // Acronym are given a little more weight
     "Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("Hills")
-    "Hillsdale Michigan".score("Hillsd") >"Hillsdale Michigan".score("HiMi")
-
-
+    "Hillsdale Michigan".score("HiMi") < "Hillsdale Michigan".score("Hillsd")
 
 # Tested And Operational Under these environments
 

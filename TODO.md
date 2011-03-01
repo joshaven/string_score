@@ -1,5 +1,4 @@
 # TODO
-
-* Add support for fuzzy matching: "String".score("Strinf") should be greater then 0 but not all that high...
-* Add configuration parameters to control scoring weights.
+* Add global config... ability to set adjust weights or change 
+  ranges 0..1 to 1..100 or some such as well as set turn on fuzziness.
 * Update tests to be more story like to ensure good coverage.
