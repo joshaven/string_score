@@ -72,18 +72,22 @@ $(document).ready(function(){
     });
   
   module('Fuzzy String');
-    test('should should score', function(){
-      expect(3);
+    test('should score mismatched strings', function(){
+      expect(2);
       equal('Hello World'.score('Hz'), 0, 'should score 0 without a specified fuzzyness.');
       ok('Hello World'.score('Hz', 0.5) < 'Hello World'.score('H', 0.5), 'fuzzy matches should be worse then good ones');
+    });
+    
+    test('should be tuned well', function(){
+      expect(2);
       ok("hello world".score("hello worl", 0.5) > "hello world".score("hello wor1", 0.5), 'mismatch should always be worse');
+      ok('Hello World'.score('jello',0.5) > 0, '"Hello World" should match "jello" more then 0 with a fuzzyness of 0.5');
     });
     
     test('should have varying degrees of fuzzyness', function(){
       expect(1);
       ok('Hello World'.score('Hz', 0.9) > 'Hello World'.score('Hz', 0.5), 'higher fuzzyness should yield higher scores');
     });
-  
   module('Benchmark');
     test('Expand to see time to score', function(){
       var iterations = 4000;
