@@ -7,6 +7,8 @@
 * Independent - Doesn't require any other JavaScript - should work with any framework.
 * Tested - Not everyone writes tests (silly people). Testing using Qunit
 * Proper - Passes jslint as well as meets the coding practices and principles of opinionated developers :-)
+* Fuzzyable - Optional paramater for fuzzyness (allows mismatched info to still score the string)
+
 
 # Overview
 This is production ready JavaScript which will score one string against another.
@@ -25,25 +27,28 @@ is the smallest and thus is probably be the best choice.  jQuery and Qunit are u
 # Examples: 
 (results are for example only... I may change the scoring algorithm without updating examples)
 
-    "hello world".score("axl") //=> 0  
-    "hello world".score("ow")  //=> 0.18181818181818182  
+    "hello world".score("axl") //=> 0 (mismatch)
+    "hello world".score("ow")  //=> 0.35454545454545455
 
-    "hello world".score("h")           //=>0.09090909090909091  
-    "hello world".score("he")          //=>0.18181818181818182  
-    "hello world".score("hel")         //=>0.2727272727272727  
-    "hello world".score("hell")        //=>0.36363636363636365  
-    "hello world".score("hello")       //=>0.45454545454545453  
+    "hello world".score("e")           //=>0.1090909090909091 (single letter match)
+    "hello world".score("h")           //=>0.5363636363636364 (single letter match plus bonuses for beginning of word and beginning of phrase)
+    "hello world".score("he")          //=>0.5727272727272728
+    "hello world".score("hel")         //=>0.6090909090909091
+    "hello world".score("hell")        //=>0.6454545454545455
+    "hello world".score("hello")       //=>0.6818181818181818
     ...
-    "hello world".score("helloworld")  //=>0.90909090909090913  
-    "hello world".score("hello worl")  //=>0.9090909090909091  
+    "hello world".score("helloworld")  //=>0.8827272727272727
+    "hello world".score("hello worl")  //=>0.8636363636363635
+    "hello world".score("hello wor1")  //=>0  (the "1" in place of the "l" makes a mismatch)
+    "hello world".score("hello wor1",0.5)  //=>0.5581818181818182 (unless it is told to be fuzzy)
     "hello world".score("hello world") //=> 1  
 
-    'Hello'.score('h') //=>0.13999999999999999  
-    'He'.score('h')    //=>0.35  
+    'Hello'.score('h') //=>0.52
+    'He'.score('h')    //=>0.6249999999999999  (better match becaus string length is closer)
 
     // Same case matches better then wrong case  
-    'Hello'.score('h') //=>0.13999999999999999  
-    'Hello'.score('H') //=>0.2  
+    'Hello'.score('h') //=>0.52
+    'Hello'.score('H') //=>0.5800000000000001
 
     // Acronym are given more weight  
     "Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("Hills")
@@ -76,22 +81,25 @@ that I am aware of.  I have taken great joy in squeezing every
 millisecond I can out of this script.  If you are aware of any 
 ways to improve this script, please let me know.
 
-string_score.js is faster and smaller then either liquidmetal.js & quicksilver.js
+string_score.js is faster and smaller and does more then either liquidmetal.js or quicksilver.js
 
 The test: 4000 iterations of 446 character string scoring a 70 character match
 
-* string_score.js: 
-  * Firefox 4 (240ms) 
-  * Chrome 9 (273rems) 
-  * Safari 5 (264ms)
-* liquidmetal.js:  
-  * Firefox 4 (805ms) 
-  * Chrome 9 (345ms) 
-  * Safari 5 (1003ms)
-* quicksilver.js:  
-  * Firefox 4 (2033ms) 
-  * Chrome 9 (2769ms) 
-  * Safari 5 (3269ms)
+* string_score.js:
+  * Firefox 3.6 (805ms)
+  * Firefox 4 (245ms)
+  * Chrome 9 (268ms)
+  * Safari 5 (259ms)
+* liquidmetal.js:
+  * Firefox 3.6 (1578ms)
+  * Firefox 4 (853ms)
+  * Chrome 9 (339ms) 
+  * Safari 5 (996ms)
+* quicksilver.js:
+  * Firefox 3.6 (3300ms)
+  * Firefox 4 (1994ms)
+  * Chrome 9 (2835ms)
+  * Safari 5 (3252ms)
 * fuzzy_string.js
   * Firefox 4 (OUCH! I am not sure it heats up my laptop and asks if I want to stop the script... fuzzy_string, nice idea but it doesn't like large strings matches.)
 

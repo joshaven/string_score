@@ -35,17 +35,19 @@ $(document).ready(function(){
   });
   
   test('Acronym bonus', function(){
-    expect(5);
+    expect(6);
     ok('Hello World'.score('HW') > 'Hello World'.score('Ho'), '"HW" should score higher with "Hello World" then Ho');
     ok('yet another Hello World'.score('yaHW') > 'Hello World'.score('yet another'));
     ok("Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("Hil"), '"HiMi" should match "Hillsdale Michigan" higher then "Hil"');
     ok("Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("illsda"));
-    ok("Hillsdale Michigan".score("HiMi") < "Hillsdale Michigan".score("hills")); // but not higher then matching start of word
+    ok("Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("hills")); 
+    ok("Hillsdale Michigan".score("HiMi") < "Hillsdale Michigan".score("hillsd")); 
   });
   
   test('Beginning of string bonus', function(){
-    expect(1);
+    expect(2);
     ok("Hillsdale".score("hi") > "Chippewa".score("hi"));
+    ok("hello world".score("h") > "hello world".score("w"), 'should have a bonus for matching first letter');
   });
   
   test('proper string weights', function(){
@@ -61,13 +63,11 @@ $(document).ready(function(){
   
   module('Fuzzy String');
   test('should pass with mismatch when fuzzy', function(){
-    expect(6);
+    expect(4);
     equal('Hello World'.score('Hz'), 0, 'should score 0 without a specified fuzzyness.');
-    ok('Hello World'.score('Hz', 0.5) > 0, 'should have a score');
     ok('Hello World'.score('Hz', 0.5) < 'Hello World'.score('H', 0.5), 'fuzzy matches should be worse then good ones');
     ok('Hello World'.score('Hz', 0.9) < 'Hello World'.score('H', 0.5), 'higher fuzzyness should yield higher scores');
-    ok('Hello World'.score('Hello-World', 0.5) > 'Hello World'.score('HW', 0.5), 'a fuzzy near full match should be higher then a low match');
-    equal('Hello World'.score('Hello Wo-ld', 0.5), 'Hello World'.score('He*lo World', 0.5), "a fuzzy near full match shouldn't care where the mismatch is");
+    ok("hello world".score("hello worl", 0.5) > "hello world".score("hello wor1", 0.5), 'mismatch should always be worse');
   });  
   
   module('Benchmark');
