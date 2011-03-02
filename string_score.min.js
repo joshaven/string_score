@@ -1,7 +1,8 @@
 /*!
  * string_score.js: String Scoring Algorithm 0.1.9 
  *
- * http://joshaven.github.com/string_score
+ * http://joshaven.com/string_score
+ * https://github.com/joshaven/string_score
  *
  * Copyright (C) 2009-2011 Joshaven Potter <yourtech@gmail.com>
  * Copyright (C) 2010-2011 Yesudeep Mangalapilly <yesudeep@gmail.com>

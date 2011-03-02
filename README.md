@@ -9,12 +9,14 @@
 * Proper - Passes jslint as well as meets the coding practices and principles of opinionated developers :-)
 * Fuzzyable - Optional paramater for fuzziness (allows mismatched info to still score the string)
 
+# See it in action
+Check it out [http://joshaven.com/string_score](http://joshaven.com/string_score)
 
 ## Installation Notes
 Simply include one of the string score JavaScript files and call the .score() method on any string.
 
 
-# Examples: 
+# Examples 
 (results are for example only... I may change the scoring algorithm without updating examples)
     
     "hello world".score("axl") //=> 0
