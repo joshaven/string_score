@@ -59,7 +59,7 @@ String.prototype.score = function(abbreviation, fuzziness) {
     if (index_in_string === -1) { 
       if (fuzziness) {
         fuzzies += 1-fuzziness;
-        break;
+        continue;
       } else {
         return 0;
       }
