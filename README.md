@@ -119,10 +119,14 @@ able to test under an unlisted browser.
 # Credits
 Thank you Lachie Cox and Quicksilver for inspiration.
 
-Copyright (C) 2009-2011 [Joshaven Potter](mailto:yourtech@gmail.com)  
-Copyright (C) 2010-2011 [Yesudeep Mangalapilly](mailto:yesudeep@gmail.com)  
+Copyright (C) 2009-2011 [Joshaven Potter](mailto:yourtech@gmail.com)
 
-Special Thanks to Yesudeep Mangalapilly for further optimizations and
-establishing the build environment so we can keep the files in sync.
+Special thanks to all who contribute... and if your not listed here please email me.
+##Contributors
+[Yesudeep Mangalapilly](mailto:yesudeep@gmail.com)  
+Eric Celeste
+[Matt Duncan](https://github.com/mrduncan)
+[Bruno Lara Tavares](https://github.com/bltavares)  
 
+# License
 Licensed under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
