@@ -122,6 +122,6 @@ $(document).ready(function(){
       var t5=end5-start5;
       ok(true, t5 + ' miliseconds to do '+iterations+' iterations of 446 character string scoring a 70 character match');
       
-      ok(true, 'score (smaller is faster): '+ (t1+t2+t3+t4+t5)/5);
+      ok(true, 'Average Score... all benchmarks devided by the number of benchmarks (smaller is faster): '+ (t1+t2+t3+t4+t5)/5) + 'ms';
     });
 });
