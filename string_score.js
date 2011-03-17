@@ -86,12 +86,13 @@ String.prototype.score = function(abbreviation, fuzziness) {
         start_of_string_bonus = 1 //true;
       }
     }
-    
-    // Acronym Bonus
-    // Weighing Logic: Typing the first character of an acronym is as if you
-    // preceded it with two perfect character matches.
-    if (string.charAt(index_in_string - 1) === ' ') {
-      character_score += 0.8; // * Math.min(index_in_string, 5); // Cap bonus at 0.4 * 5
+    else {
+	// Acronym Bonus
+	// Weighing Logic: Typing the first character of an acronym is as if you
+	// preceded it with two perfect character matches.
+	if (string.charAt(index_in_string - 1) === ' ') {
+	character_score += 0.8; // * Math.min(index_in_string, 5); // Cap bonus at 0.4 * 5
+	}
     }
     
     // Left trim the already matched part of the string
