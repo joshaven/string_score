@@ -104,6 +104,7 @@ with the LiquidMetal Syntax.
 
 * C# port: [ScoreSharp](https://github.com/bltavares/scoresharp)  
 * Python port: [stringslipper](https://github.com/gorakhargosh/stringslipper)
+* Ruby port: [scorer](https://github.com/mrduncan/scorer)
 
 # Notes
 string_score.js does not have any external dependencies 
