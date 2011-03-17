@@ -100,6 +100,10 @@ The test: 4000 iterations of 446 character string scoring a 70 character match
 same way, LiquidMetal has to be called differently so the test file was modified to work
 with the LiquidMetal Syntax.
 
+# Ports
+
+* C# port: [ScoreSharp](https://github.com/bltavares/scoresharp)  
+* Python port: [stringslipper](https://github.com/gorakhargosh/stringslipper)
 
 # Notes
 string_score.js does not have any external dependencies 
