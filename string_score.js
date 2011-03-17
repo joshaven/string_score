@@ -18,7 +18,7 @@
  */
 String.prototype.score = function(abbreviation, fuzziness) {
   // If the string is equal to the abbreviation, perfect match.
-  if (string == abbreviation) {return 1.0;}
+  if (this == abbreviation) {return 1;}
   //if it's not a perfect match and is empty return 0
   if(abbreviation == "") {return 0;}
 
