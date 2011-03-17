@@ -1,5 +1,5 @@
 /*!
- * string_score.js: String Scoring Algorithm 0.1.9 
+ * string_score.js: String Scoring Algorithm 0.1.10 
  *
  * http://joshaven.com/string_score
  * https://github.com/joshaven/string_score
