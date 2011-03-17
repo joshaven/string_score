@@ -5,7 +5,7 @@
  * https://github.com/joshaven/string_score
  *
  * Copyright (C) 2009-2011 Joshaven Potter <yourtech@gmail.com>
- * Copyright (C) 2010-2011 Yesudeep Mangalapilly <yesudeep@gmail.com>
+ * Special thanks to all of the contributors listed here https://github.com/joshaven/string_score
  * MIT license: http://www.opensource.org/licenses/mit-license.php
  *
  * Date: Tue Mar 1 2011
