@@ -17,6 +17,11 @@
  *  'Hello World'.score('Hello');  //=> 0.7318181818181818
  */
 String.prototype.score = function(abbreviation, fuzziness) {
+  // If the string is equal to the abbreviation, perfect match.
+  if (string == abbreviation) {return 1.0;}
+  //if it's not a perfect match and is empty return 0
+  if(abbreviation == "") {return 0;}
+
   var total_character_score = 0,
       abbreviation_length = abbreviation.length,
       string = this,
@@ -25,9 +30,6 @@ String.prototype.score = function(abbreviation, fuzziness) {
       abbreviation_score,
       fuzzies=1,
       final_score;
-  
-  // If the string is equal to the abbreviation, perfect match.
-  if (string == abbreviation) {return 1.0;}
   
   // Walk through abbreviation and add up scores.
   for (var i = 0,
@@ -86,12 +88,13 @@ String.prototype.score = function(abbreviation, fuzziness) {
         start_of_string_bonus = 1 //true;
       }
     }
-    
-    // Acronym Bonus
-    // Weighing Logic: Typing the first character of an acronym is as if you
-    // preceded it with two perfect character matches.
-    if (string.charAt(index_in_string - 1) === ' ') {
-      character_score += 0.8; // * Math.min(index_in_string, 5); // Cap bonus at 0.4 * 5
+    else {
+	// Acronym Bonus
+	// Weighing Logic: Typing the first character of an acronym is as if you
+	// preceded it with two perfect character matches.
+	if (string.charAt(index_in_string - 1) === ' ') {
+	character_score += 0.8; // * Math.min(index_in_string, 5); // Cap bonus at 0.4 * 5
+	}
     }
     
     // Left trim the already matched part of the string
