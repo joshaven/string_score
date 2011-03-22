@@ -103,6 +103,7 @@ with the LiquidMetal Syntax.
 # Ports
 
 * C# port: [ScoreSharp](https://github.com/bltavares/scoresharp)  
+* C port: [string_score](https://github.com/kurige/string_score)
 * Python port: [stringslipper](https://github.com/gorakhargosh/stringslipper)
 * Ruby port: [scorer](https://github.com/mrduncan/scorer)
 
