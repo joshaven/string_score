@@ -111,6 +111,13 @@ Please also keep track of the string score version that you have ported from. Fo
   * [string_score_ruby by James Lindley](https://github.com/jlindley/string_score_ruby)
 * Java: [string_score by Shingo Omura](https://github.com/everpeace/string-score)
 
+<<<<<<< HEAD
+=======
+* C# port: [ScoreSharp](https://github.com/bltavares/scoresharp)  
+* C port: [string_score](https://github.com/kurige/string_score)
+* Python port: [stringslipper](https://github.com/gorakhargosh/stringslipper)
+* Ruby port: [scorer](https://github.com/mrduncan/scorer)
+>>>>>>> ca69d9e18b2f81ec92c17c0610ffd58ed04f2936
 
 # Notes
 string_score.js does not have any external dependencies 
