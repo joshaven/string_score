@@ -45,18 +45,10 @@ String.prototype.score = function(abbreviation, fuzziness) {
     // Find the first case-insensitive match of a character.
     c = abbreviation[i];
     
-    //index_in_string = __first_valid_index(
-    //    string.indexOf(c.toLowerCase()),
-    //    string.indexOf(c.toUpperCase())
-    //);
-    // Inlined the above call below.
     index_c_lowercase = string.indexOf(c.toLowerCase());
     index_c_uppercase = string.indexOf(c.toUpperCase());
     min_index = Math.min(index_c_lowercase, index_c_uppercase);
-    index_in_string = (min_index > -1) ?
-        min_index :
-        Math.max(index_c_lowercase, index_c_uppercase);
-    // End inlining.
+    index_in_string = (min_index > -1) ? min_index : Math.max(index_c_lowercase, index_c_uppercase);
     
     if (index_in_string === -1) { 
       if (fuzziness) {
@@ -78,8 +70,7 @@ String.prototype.score = function(abbreviation, fuzziness) {
     
     // Consecutive letter & start-of-string Bonus
     if (index_in_string === 0) {
-      // Increase the score when matching first character of the
-      // remainder of the string
+      // Increase the score when matching first character of the remainder of the string
       character_score += 0.6;
       if (i === 0) {
         // If match is the first character of the string
@@ -89,12 +80,12 @@ String.prototype.score = function(abbreviation, fuzziness) {
       }
     }
     else {
-	// Acronym Bonus
-	// Weighing Logic: Typing the first character of an acronym is as if you
-	// preceded it with two perfect character matches.
-	if (string.charAt(index_in_string - 1) === ' ') {
-	character_score += 0.8; // * Math.min(index_in_string, 5); // Cap bonus at 0.4 * 5
-	}
+  // Acronym Bonus
+  // Weighing Logic: Typing the first character of an acronym is as if you
+  // preceded it with two perfect character matches.
+  if (string.charAt(index_in_string - 1) === ' ') {
+    character_score += 0.8; // * Math.min(index_in_string, 5); // Cap bonus at 0.4 * 5
+  }
     }
     
     // Left trim the already matched part of the string
