@@ -43,7 +43,7 @@ String.prototype.score = function(abbreviation, fuzziness) {
      ++i) {
     
     // Find the first case-insensitive match of a character.
-    c = abbreviation[i];
+    c = abbreviation.charAt(i);
     
     index_c_lowercase = string.indexOf(c.toLowerCase());
     index_c_uppercase = string.indexOf(c.toUpperCase());
