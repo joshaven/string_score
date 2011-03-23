@@ -101,10 +101,16 @@ same way, LiquidMetal has to be called differently so the test file was modified
 with the LiquidMetal Syntax.
 
 # Ports
+Please notify me of any ports so I can have them listed here.  
+Please also keep track of the string score version that you have ported from. For example, in your readme include a note like: ported from version 0.2
 
-* C# port: [ScoreSharp](https://github.com/bltavares/scoresharp)  
-* Python port: [stringslipper](https://github.com/gorakhargosh/stringslipper)
-* Ruby port: [scorer](https://github.com/mrduncan/scorer)
+* C# port: [ScoreSharp Bruno Lara Tavares](https://github.com/bltavares/scoresharp)  
+* Python port: [stringslipper by Yesudeep Mangalapilly](https://github.com/gorakhargosh/stringslipper)
+* Ruby ports: 
+  * [scorer by Matt Duncan](https://github.com/mrduncan/scorer)
+  * [string_score_ruby by James Lindley](https://github.com/jlindley/string_score_ruby)
+* Java: [string_score by Shingo Omura](https://github.com/everpeace/string-score)
+
 
 # Notes
 string_score.js does not have any external dependencies 
