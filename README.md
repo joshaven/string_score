@@ -36,15 +36,15 @@ Simply include one of the string score JavaScript files and call the .score() me
     "hello world".score("hello wor1")  //=>0  (the "1" in place of the "l" makes a mismatch)
     "hello world".score("hello wor1",0.5)  //=>0.5581818181818182 (fuzzy)
 
-    // considers string length
+    // Considers string length
     'Hello'.score('h') //=>0.52
     'He'.score('h')    //=>0.6249999999999999  (better match becaus string length is closer)
 
-    // Same case matches better then wrong case
+    // Same case matches better than wrong case
     'Hello'.score('h') //=>0.52
     'Hello'.score('H') //=>0.5800000000000001
 
-    // Acronym are given a little more weight
+    // Acronyms are given a little more weight
     "Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("Hills")
     "Hillsdale Michigan".score("HiMi") < "Hillsdale Michigan".score("Hillsd")
 
@@ -73,9 +73,9 @@ that I am aware of.  I have taken great joy in squeezing every
 millisecond I can out of this script.  If you are aware of any 
 ways to improve this script, please let me know.
 
-string_score.js is faster and smaller and does more then either liquidmetal.js or quicksilver.js
+string_score.js is faster and smaller and does more than either liquidmetal.js or quicksilver.js
 
-The test: 4000 iterations of 446 character string scoring a 70 character match
+The test: 4000 iterations of 446 character string scoring a 70-character match
 
 * string_score.js:
   * Firefox 3.6 (805ms)
@@ -114,9 +114,9 @@ Please also keep track of the string score version that you have ported from. Fo
 
 # Notes
 string_score.js does not have any external dependencies 
-other then a reasonably new browser.
+other than a reasonably new browser.
 
-The tests located in the tests folder relies the files 
+The tests located in the tests folder rely on the files 
 located in the tests folder.
 
 Please share your testing results with me if you are 
@@ -127,7 +127,7 @@ Author [Joshaven Potter](mailto:yourtech@gmail.com)
 
 Thank you Lachie Cox and Quicksilver for inspiration.  
 
-Special thanks to all who contribute... and if your not listed here please email me.
+Special thanks to all who contribute... and if you're not listed here please email me.
 ##Contributors
 [Yesudeep Mangalapilly](mailto:yesudeep@gmail.com) - Collaborator  
 Eric Celeste  
