@@ -111,6 +111,7 @@ Please also keep track of the string score version that you have ported from. Fo
   * [scorer by Matt Duncan](https://github.com/mrduncan/scorer)
   * [string_score_ruby by James Lindley](https://github.com/jlindley/string_score_ruby)
 * Java: [string_score by Shingo Omura](https://github.com/everpeace/string-score)
+* 4GL: [string_score by Antonio Pérez](https://github.com/skarcha/string_score)
 
 # Notes
 string_score.js does not have any external dependencies 
