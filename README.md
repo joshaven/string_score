@@ -7,7 +7,7 @@
 * Independent - Doesn't require any other JavaScript - should work with any framework.
 * Tested - Not everyone writes tests (silly people). Testing using Qunit
 * Proper - Passes jslint as well as meets the coding practices and principles of opinionated developers :-)
-* Fuzzyable - Optional paramater for fuzziness (allows mismatched info to still score the string)
+* Fuzzyable - Optional parameter for fuzziness (allows mismatched info to still score the string)
 
 # See it in action
 Check it out [http://joshaven.com/string_score](http://joshaven.com/string_score)
