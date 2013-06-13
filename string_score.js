@@ -20,10 +20,10 @@
 String.prototype.score = function(word, fuzziness) {
 
   // If the string is equal to the word, perfect match.
-  if (this === word) return 1;
+  if (this == word) return 1;
 
   //if it's not a perfect match and is empty return 0
-  if( word === "") return 0;
+  if( word == "") return 0;
 
   var runningScore = 0,
       charScore,
@@ -84,6 +84,8 @@ String.prototype.score = function(word, fuzziness) {
         charScore = 0.1;
         if (string[idxOf - 1] === ' ') charScore += 0.8;
       }
+
+      if (string[idxOf] === word[i]) charScore += 0.1; 
       
       runningScore += charScore;
       startAt = idxOf + 1;
