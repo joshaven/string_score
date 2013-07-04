@@ -15,6 +15,13 @@ Check it out [http://joshaven.com/string_score](http://joshaven.com/string_score
 ## Installation Notes
 Simply include one of the string score JavaScript files and call the .score() method on any string.
 
+## Installation Notes
+    npm install string_score
+
+## Usage
+    require("string_score");
+
+Thats it! It will automatically add a .score() method to all JavaScript String object... "String".score("str");
 
 # Examples 
 (results are for example only... I may change the scoring algorithm without updating examples)

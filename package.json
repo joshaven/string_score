@@ -1,0 +1,14 @@
+{
+  "name": "string_score",
+  "version": "0.1.10",
+  "description": "String Scoring Algorithm packaged for NodeJS",
+  "keywords": ["string", "score", "string_score"],
+  "author": "Joshaven Potter <yourtech@gmail.com>",
+  "repository": { "type": "git", "url": "git://github.com/tarunc/string_score.git" },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "main": "string_score.js"
+}
