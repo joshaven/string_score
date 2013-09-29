@@ -2,7 +2,7 @@
 
 * Simple - Adds a .score() method to the JavaScript String object... "String".score("str");
 * Fast - fastest that I can find, often drastically faster... run the tests yourself
-* Small - We are talking (431 bytes)
+* Small - We are talking (520 Bytes)
 * Portable - Works in 100% of the browsers I've tested on multiple platforms
 * Independent - Doesn't require any other JavaScript - should work with any framework.
 * Tested - Not everyone writes tests (silly people). Testing using Qunit
@@ -41,7 +41,7 @@ Thats it! It will automatically add a .score() method to all JavaScript String o
     
     // And then there is fuzziness
     "hello world".score("hello wor1")  //=>0  (the "1" in place of the "l" makes a mismatch)
-    "hello world".score("hello wor1",0.5)  //=>0.5581818181818182 (fuzzy)
+    "hello world".score("hello wor1",0.5)  //=>0.6081818181818182 (fuzzy)
 
     // Considers string length
     'Hello'.score('h') //=>0.52
@@ -59,14 +59,11 @@ Thats it! It will automatically add a .score() method to all JavaScript String o
 
 Fully functional in the 100% of the tested browsers:
 
-* Firefox 3 & 3.5beta (Mac & Windows)
-* Firefox 4.0beta (Mac)
-* Safari 4 (Mac & Windows)
-* Safari 5 (Mac)
-* IE: 7 (Windows) **
-* Chrome: 2 (Windows)
-* Chrome: 9.0 (Mac)
-* Opera: 9.64 (Windows)
+* Firefox 3 & Newer (Mac & Windows)
+* Safari 4 & Newer (Mac & Windows)
+* IE: 7 & Newer (Windows) **
+* Chrome: 2 & Newer (Windows)
+* Opera: 9.64 & Newer (Windows)
 
 ** IE 7 fails (stop running this script message) with 4000 iterations 
 of the benchmark test. All other browsers tested survived this test, 
