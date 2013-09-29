@@ -17,8 +17,6 @@ Simply include one of the string score JavaScript files and call the .score() me
 
 ### NodeJS Installation
     npm install --save string_score
-
-### NodeJS Usage
     require("string_score");
 
 Thats it! It will automatically add a .score() method to all JavaScript String object... "String".score("str");
