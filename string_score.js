@@ -37,7 +37,8 @@ String.prototype.score = function (word, fuzziness) {
         idxOf,
         startAt = 0,
         fuzzies = 1,
-        fuzzyFactor;
+        fuzzyFactor,
+        i;
 
     // Cache fuzzyFactor for speed increase
     if (fuzziness) fuzzyFactor = 1 - fuzziness;
@@ -45,7 +46,7 @@ String.prototype.score = function (word, fuzziness) {
     // Walk through word and add up scores.
     // Code duplication occurs to prevent checking fuzziness inside for loop
     if (fuzziness) {
-        for (var i = 0; i < wordLength; ++i) {
+        for (i = 0; i < wordLength; ++i) {
 
             // Find next first case-insensitive match of a character.
             idxOf = lString.indexOf(lWord[i], startAt);
@@ -73,7 +74,7 @@ String.prototype.score = function (word, fuzziness) {
             startAt = idxOf + 1;
         }
     } else {
-        for (var i = 0; i < wordLength; ++i) {
+        for (i = 0; i < wordLength; ++i) {
             idxOf = lString.indexOf(lWord[i], startAt);
             if (-1 === idxOf) {
                 return 0;
