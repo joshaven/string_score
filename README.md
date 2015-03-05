@@ -115,6 +115,7 @@ Please also keep track of the string score version that you have ported from. Fo
 * Java: [string_score by Shingo Omura](https://github.com/everpeace/string-score)
 * 4GL: [string_score by Antonio Pérez](https://github.com/skarcha/string_score)
 * Objective-C [StringScore by Nicholas Bruning](https://github.com/thetron/StringScore)
+* Swift [StringScore_Swift by Yichi Zhang](https://github.com/yichizhang/StringScore_Swift)
 
 # Notes
 string_score.js does not have any external dependencies
