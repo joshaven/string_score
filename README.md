@@ -1,5 +1,6 @@
 # What is it
 
+* Free - MIT License
 * Simple - Adds a .score() method to the JavaScript String object... "String".score("str");
 * Fast - fastest that I can find, often drastically faster... run the tests yourself
 * Small - We are talking (520 Bytes)
@@ -27,23 +28,28 @@ Thats it! It will automatically add a .score() method to all JavaScript String o
     "hello world".score("axl") //=> 0
     "hello world".score("ow")  //=> 0.35454545454545455
 
-    "hello world".score("e")           //=>0.1090909090909091 (single letter match)
-    "hello world".score("h")           //=>0.5363636363636364 (single letter match plus bonuses for beginning of word and beginning of phrase)
+    // Single letter match
+    "hello world".score("e")           //=>0.1090909090909091
+
+    // Single letter match plus bonuses for beginning of word and beginning of phrase
+    "hello world".score("h")           //=>0.5363636363636364
+
     "hello world".score("he")          //=>0.5727272727272728
     "hello world".score("hel")         //=>0.6090909090909091
     "hello world".score("hell")        //=>0.6454545454545455
     "hello world".score("hello")       //=>0.6818181818181818
-    ...
+    /* ... */
     "hello world".score("hello worl")  //=>0.8636363636363635
     "hello world".score("hello world") //=> 1
 
-    // And then there is fuzziness
-    "hello world".score("hello wor1")  //=>0  (the "1" in place of the "l" makes a mismatch)
+
+    // Using a "1" in place of an "l" is a mismatch unless the score is fuzzy
+    "hello world".score("hello wor1")  //=>0
     "hello world".score("hello wor1",0.5)  //=>0.6081818181818182 (fuzzy)
 
-    // Considers string length
+    // Finding a match in a shorter string is more significant.
     'Hello'.score('h') //=>0.52
-    'He'.score('h')    //=>0.6249999999999999  (better match becaus string length is closer)
+    'He'.score('h')    //=>0.6249999999999999
 
     // Same case matches better than wrong case
     'Hello'.score('h') //=>0.52
@@ -53,7 +59,7 @@ Thats it! It will automatically add a .score() method to all JavaScript String o
     "Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("Hills")
     "Hillsdale Michigan".score("HiMi") < "Hillsdale Michigan".score("Hillsd")
 
-# Tested And Operational Under these environments
+# Tested And Operational Under all known environments (within reason)
 
 Fully functional in the 100% of the tested browsers:
 
@@ -70,12 +76,14 @@ that is causing IE to choke is: 4000 iterations of 446 character
 string scoring a 70 character match.
 
 # Benchmarks
-This is the fastest and smallest javascript string scoring plugin
+This is the fastest and smallest javascript string scoring script
 that I am aware of.  I have taken great joy in squeezing every
 millisecond I can out of this script.  If you are aware of any
 ways to improve this script, please let me know.
 
-string_score.js is faster and smaller and does more than either liquidmetal.js or quicksilver.js
+string_score.js is faster and smaller and does more than any other scripts
+that I am aware.  Tests for liquidmetal.js or quicksilver.js are included in my
+test suite for direct comparison.
 
 The test: 4000 iterations of 446 character string scoring a 70-character match
 
@@ -95,7 +103,9 @@ The test: 4000 iterations of 446 character string scoring a 70-character match
   * Chrome 9 (2835ms)
   * Safari 5 (3252ms)
 * fuzzy_string.js
-  * Firefox 4 (OUCH! I am not sure it heats up my laptop and asks if I want to stop the script... fuzzy_string, nice idea but it doesn't like large strings matches.)
+  * Firefox 4 (OUCH! I am not sure it heats up my laptop and asks if I want to
+    stop the script... fuzzy_string, nice idea but it doesn't like large strings
+    matches.)
 
 ** Tests run with jQuery 1.5 on Mac Book Pro 2.4GHz Core 2 Duo running Snow Leopard
 *** quicksilver & string_score both use the same test file because they are used in the
@@ -104,7 +114,8 @@ with the LiquidMetal Syntax.
 
 # Ports
 Please notify me of any ports so I can have them listed here.
-Please also keep track of the string score version that you have ported from. For example, in your readme include a note like: ported from version 0.2
+Please also keep track of the string score version that you have ported from. For
+example, in your readme include a note like: ported from version 0.2
 
 * C# port: [ScoreSharp Bruno Lara Tavares](https://github.com/bltavares/scoresharp)
 * C port: [string_score by kurige](https://github.com/kurige/string_score)
@@ -118,25 +129,18 @@ Please also keep track of the string score version that you have ported from. Fo
 
 # Notes
 string_score.js does not have any external dependencies
-other than a reasonably new browser.
+other than a reasonably new JavaScript interpreter.
 
 The tests located in the tests folder rely on the files
 located in the tests folder.
-
-Please share your testing results with me if you are
-able to test under an unlisted browser.
 
 # Credits
 Author [Joshaven Potter](mailto:yourtech@gmail.com)
 
 Thank you Lachie Cox and Quicksilver for inspiration.
 
-Special thanks to all who contribute... and if you're not listed here please email me.
-##Contributors
-[Yesudeep Mangalapilly](mailto:yesudeep@gmail.com) - Collaborator
-Eric Celeste
-[Matt Duncan](https://github.com/mrduncan)
-[Bruno Lara Tavares](https://github.com/bltavares)
+###Contributors
+Contributing Members: [https://github.com/joshaven/string_score/network/members](https://github.com/joshaven/string_score/network/member)
 
 # License
 Licensed under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
