@@ -4,11 +4,11 @@
  * http://joshaven.com/string_score
  * https://github.com/joshaven/string_score
  *
- * Copyright (C) 2009-2014 Joshaven Potter <yourtech@gmail.com>
- * Special thanks to all of the contributors listed here https://github.com/joshaven/string_score
+ * Free to use, modify, etc... see attached license for more info
+ * Copyright (C) 2009-2015 Joshaven Potter <yourtech@gmail.com>
  * MIT License: http://opensource.org/licenses/MIT
+ * Special thanks to all of the contributors listed here https://github.com/joshaven/string_score
  *
- * Date: Tue Mar 1 2011
  * Updated: Tue Mar 10 2015
 */
 
