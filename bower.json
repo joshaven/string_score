@@ -1,0 +1,30 @@
+{
+  "name": "string_score",
+  "description": "String Scoring Algorithm packaged for NodeJS",
+  "main": "string_score.js",
+  "authors": [
+    "Joshaven Potter <yourtech@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "string",
+    "score",
+    "string_score"
+  ],
+  "homepage": "https://github.com/joshaven/string_score",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "overrides": {
+    "string_score_ext": {
+      "main": "string_score.js"
+    }
+  }
+}
