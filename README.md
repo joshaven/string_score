@@ -129,6 +129,8 @@ example, in your readme include a note like: ported from version 0.2
 * Swift ports:
   * [StringScore_Swift by Yichi Zhang](https://github.com/yichizhang/StringScore_Swift)
   * [SwiftStringScore by Dominik Felber](https://github.com/dfelber/SwiftStringScore)
+* Kotlin:
+  * [KotlinString_Score by Francisco Trigo](https://github.com/Franarroutado/KotlinString_Score)
 
 # Notes
 string_score.js does not have any external dependencies
