@@ -102,3 +102,34 @@ String.prototype.score = function (word, fuzziness) {
 
   return finalScore;
 };
+
+/**
+ * Gives back an array of indexes of the unique closest matches,
+ * on a string array to a string.
+ *    'Hello World'.closest(['el', 'll', 'o', 'll']); //=> [ 0, 1 ]
+ */
+String.prototype.closest = function (words, fuzziness) {
+  'use strict';
+
+  if (!Array.isArray(words) || words.length < 2) return -1; // Wrong usage
+
+  var results = [], string = this;
+
+  var scores = words.map(function(v){return string.score(v, fuzziness)});
+  var max = Math.max.apply(null, scores);
+
+  // Check if the given word is already present among the results
+  function unique(word) {
+    for (var i = 0; i < results.length; i++)
+      if (words[results[i]] == word)
+        return false;
+    return true;
+  }
+
+  // Generate results
+  for (var i = 0; i < scores.length; i++)
+    if (scores[i] == max && unique(words[i]))
+      results.push(i);
+
+  return results;
+};
