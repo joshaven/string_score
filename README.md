@@ -24,40 +24,41 @@ Thats it! It will automatically add a .score() method to all JavaScript String o
 
 # Examples
 (results are for example only... I may change the scoring algorithm without updating examples)
+```js
+"hello world".score("axl") //=> 0
+"hello world".score("ow")  //=> 0.35454545454545455
 
-    "hello world".score("axl") //=> 0
-    "hello world".score("ow")  //=> 0.35454545454545455
+// Single letter match
+"hello world".score("e")           //=>0.1090909090909091
 
-    // Single letter match
-    "hello world".score("e")           //=>0.1090909090909091
+// Single letter match plus bonuses for beginning of word and beginning of phrase
+"hello world".score("h")           //=>0.5363636363636364
 
-    // Single letter match plus bonuses for beginning of word and beginning of phrase
-    "hello world".score("h")           //=>0.5363636363636364
-
-    "hello world".score("he")          //=>0.5727272727272728
-    "hello world".score("hel")         //=>0.6090909090909091
-    "hello world".score("hell")        //=>0.6454545454545455
-    "hello world".score("hello")       //=>0.6818181818181818
-    /* ... */
-    "hello world".score("hello worl")  //=>0.8636363636363635
-    "hello world".score("hello world") //=> 1
+"hello world".score("he")          //=>0.5727272727272728
+"hello world".score("hel")         //=>0.6090909090909091
+"hello world".score("hell")        //=>0.6454545454545455
+"hello world".score("hello")       //=>0.6818181818181818
+/* ... */
+"hello world".score("hello worl")  //=>0.8636363636363635
+"hello world".score("hello world") //=> 1
 
 
-    // Using a "1" in place of an "l" is a mismatch unless the score is fuzzy
-    "hello world".score("hello wor1")  //=>0
-    "hello world".score("hello wor1",0.5)  //=>0.6081818181818182 (fuzzy)
+// Using a "1" in place of an "l" is a mismatch unless the score is fuzzy
+"hello world".score("hello wor1")  //=>0
+"hello world".score("hello wor1",0.5)  //=>0.6081818181818182 (fuzzy)
 
-    // Finding a match in a shorter string is more significant.
-    'Hello'.score('h') //=>0.52
-    'He'.score('h')    //=>0.6249999999999999
+// Finding a match in a shorter string is more significant.
+'Hello'.score('h') //=>0.52
+'He'.score('h')    //=>0.6249999999999999
 
-    // Same case matches better than wrong case
-    'Hello'.score('h') //=>0.52
-    'Hello'.score('H') //=>0.5800000000000001
+// Same case matches better than wrong case
+'Hello'.score('h') //=>0.52
+'Hello'.score('H') //=>0.5800000000000001
 
-    // Acronyms are given a little more weight
-    "Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("Hills")
-    "Hillsdale Michigan".score("HiMi") < "Hillsdale Michigan".score("Hillsd")
+// Acronyms are given a little more weight
+"Hillsdale Michigan".score("HiMi") > "Hillsdale Michigan".score("Hills")
+"Hillsdale Michigan".score("HiMi") < "Hillsdale Michigan".score("Hillsd")
+```
 
 # Tested And Operational Under all known environments (within reason)
 
@@ -144,7 +145,7 @@ Author [Joshaven Potter](mailto:yourtech@gmail.com)
 
 Thank you Lachie Cox and Quicksilver for inspiration.
 
-###Contributors
+### Contributors
 Contributing Members: [https://github.com/joshaven/string_score/network/members](https://github.com/joshaven/string_score/network/member)
 
 # License
