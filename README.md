@@ -145,7 +145,7 @@ Author [Joshaven Potter](mailto:yourtech@gmail.com)
 
 Thank you Lachie Cox and Quicksilver for inspiration.
 
-###Contributors
+### Contributors
 Contributing Members: [https://github.com/joshaven/string_score/network/members](https://github.com/joshaven/string_score/network/member)
 
 # License
